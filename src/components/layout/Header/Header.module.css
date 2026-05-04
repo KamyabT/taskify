@@ -1,0 +1,12 @@
+.header {
+  left: 250px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.searchWrapper {
+  flex: 1;
+  max-width: 500px;
+}

@@ -1,0 +1,12 @@
+.cards {
+  display: flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--bg-card);
+  width: 250px;
+  margin-right: 16px;
+  border-radius: 8px;
+  padding: 16px;
+  border: 1px solid var(--border-main);
+}

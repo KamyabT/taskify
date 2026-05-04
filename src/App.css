@@ -1,0 +1,104 @@
+@import "./typography.css";
+
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+span {
+  margin-bottom: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin-bottom: 0 !important;
+}
+
+/*******************************************/
+
+:root {
+  --primary: #4f46e5; /* بنفش-آبی اصلی (دکمه‌ها، اکشن‌ها) */
+  --primary-light: #6366f1; /* هاور و حالت فعال */
+  --primary-soft: #eef2ff; /* بک‌گراند لایت */
+
+  --bg-main: #f9fafb; /* بک‌گراند کل صفحه */
+  --bg-sections: #fefefe;
+  --bg-card: #ffffff; /* کارت‌ها */
+  --bg-sidebar: #111827; /* سایدبار تیره */
+  --bg-hover: #f4f3fe;
+
+  --text-primary: #111827; /* متن اصلی */
+  --text-secondary: #6b7280; /* متن کم‌اهمیت */
+  --text-light: #9ca3af; /* placeholder / label */
+
+  --border-main: #ebeff5;
+
+  --success: #26a155; /* completed */
+  --success-light: #e5f8e8; /* completed light */
+  --warning: #f59e0b; /* pending */
+  --warning-light: #fef3e0; /* pending light */
+  --danger: #eb3253; /* overdue / error */
+  --danger-light: #fee7eb; /* overdue light */
+  --info: #3b82f6; /* in progress */  
+  --info-light: #ebebfe; /* in progress light */
+}
+
+/********************
+
+
+| مقدار | استفاده           |
+| ----- | ----------------- |
+| 8px   | فاصله کوچک        |
+| 12px  | بین متن           |
+| 16px  | padding کارت      |
+| 20px  | فاصله بین سکشن‌ها |
+
+
+*****************/
+
+cursor-pointer {
+  cursor: pointer;
+}
+
+
+
+
+/**************************************/
