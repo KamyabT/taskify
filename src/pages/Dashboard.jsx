@@ -3,36 +3,27 @@ import Sidebar from "../components/layout/Sidebar/Sidebar";
 import CompletionChart from "../features/dashboard/CompletionChart";
 import StatsCards from "../features/dashboard/StatsCards";
 import style from "./Dashboard.module.css";
-import { ClipboardList, Timer, CircleAlert, CircleCheck, icons } from "lucide-react";
 
 const stats = [
   {
-    title: "Total Tasks",
-    icon: <ClipboardList color="var(--primary)" size={38} />,
+    title: "total",
     value: 24,
     change: 12,
-    backColor: "var(--info-light)",
   },
   {
-    title: "In Progress",
-    icon: <Timer size={38} color={"var(--warning)"} />,
+    title: "progress",
     value: 8,
     change: 5,
-    backColor: "var(--warning-light)",
   },
   {
-    title: "Completed",
-    icon: <CircleCheck size={38} color="var(--success)" />,
+    title: "completed",
     value: 12,
     change: 18,
-    backColor: "var(--info-light)",
   },
   {
-    title: "Overdue",
-    icon: <CircleAlert size={38} color="var(--danger)" />,
+    title: "overdue",
     value: 4,
     change: 8,
-    backColor: "var(--info-light)",
   },
 ];
 
@@ -42,21 +33,15 @@ const Dashboard = () => {
       <Sidebar />
       <section className="d-flex flex-column px-4 py-3" style={{ width: "100vw" }}>
         <Header />
-        <div className="d-flex w-100  mt-4">
-          <div className="d-flex">
-            {stats.map(({ icon, title, value, change, backColor }) => {
+        <div className={`${style.statsRow} mt-4 `}>
+          <div className={style.cardsWrapper}>
+            {stats.map(({ title, value, change }) => {
               return (
-                <StatsCards
-                  icon={icon}
-                  title={title}
-                  value={value}
-                  change={change}
-                  backColor={backColor}
-                />
+                <StatsCards key={title} title={title} value={value} change={change} />
               );
             })}
           </div>
-          <div className="w-100">
+          <div className={style.chartWrapper}>
             <CompletionChart />
           </div>
         </div>

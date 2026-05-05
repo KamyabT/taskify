@@ -5,3 +5,20 @@
 /* .statsCard:last-child {
   margin-right: 0;
 } */
+
+.statsRow {
+  display: flex;
+  gap: 16px;
+}
+
+/* کارت‌ها */
+.cardsWrapper {
+  display: flex;
+  gap: 16px;
+  flex: 3; /* مهم */
+}
+
+/* چارت */
+.chartWrapper {
+  flex: 1; /* مهم */
+}
