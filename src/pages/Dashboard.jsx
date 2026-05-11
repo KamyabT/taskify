@@ -2,6 +2,7 @@ import Header from "../components/layout/Header/Header";
 import Sidebar from "../components/layout/Sidebar/Sidebar";
 import CompletionChart from "../features/dashboard/CompletionChart";
 import StatsCards from "../features/dashboard/StatsCards";
+import TasksTable from "../features/tasks/components/TasksTable";
 import style from "./Dashboard.module.css";
 
 const stats = [
@@ -44,6 +45,9 @@ const Dashboard = () => {
           <div className={style.chartWrapper}>
             <CompletionChart />
           </div>
+        </div>
+        <div>
+          <TasksTable />
         </div>
       </section>
     </main>

@@ -1,7 +1,7 @@
+import TasksHeader from "./TaskHeader";
+
 const TasksTable = () => {
-    return ( <h1>
-        <span>hiiii table</span>
-    </h1> );
-}
- 
+  return <TasksHeader />;
+};
+
 export default TasksTable;
