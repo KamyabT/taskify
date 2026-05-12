@@ -1,3 +1,4 @@
+import Button from "../../../components/ui/Button";
 import style from "./TableFilters.module.css";
 import { Search } from "lucide-react";
 
@@ -7,7 +8,11 @@ const TableFilters = () => {
       <h6>All Tasks</h6>
       <div className="d-flex justify-content-between" style={{ position: "relative" }}>
         <Search size={16} className={style.icon} />
-        <input className={`${style.searchBox} me-4`} type="text" placeholder="Search tasks..." />
+        <input
+          className={`${style.searchBox} me-4`}
+          type="text"
+          placeholder="Search tasks..."
+        />
         <div>
           <select className="select text-card-label me-3" name="" id="">
             <option value="">All Status</option>
@@ -27,7 +32,7 @@ const TableFilters = () => {
             <option value="">Sort by: Priority</option>
             <option value="">Sort by: Status</option>
           </select>
-          <button className="btn btn-danger ms-4">Clear Filters</button>
+          <Button type="warning">Clear Filters</Button>
         </div>
       </div>
     </div>

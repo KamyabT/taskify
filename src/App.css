@@ -70,6 +70,7 @@ h6 {
   --text-light: #9ca3af; /* placeholder / label */
 
   --border-main: #ebeff5;
+  --border-warning: #fee6ec;
 
   --success: #26a155; /* completed */
   --success-light: #e5f8e8; /* completed light */
@@ -79,6 +80,9 @@ h6 {
   --danger-light: #fee7eb; /* overdue light */
   --info: #3b82f6; /* in progress */
   --info-light: #ebebfe; /* in progress light */
+
+  --warning-bg: #fef3f6;
+
 }
 
 /********************

@@ -29,3 +29,19 @@
   transform: translateY(-50%);
   color: var(--text-secondary);
 }
+
+.warningBtn {
+  background-color: var(--warning-bg);
+  border: 1px solid var(--border-warning);
+  border-radius: 8px;
+  color: var(--danger);
+  padding: 6px 12px;
+  font-weight: 600;
+}
+
+.warningBtn:hover {
+  background-color: #ef253e;
+  color: white;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
