@@ -1,12 +1,31 @@
 .searchBox {
-  position: relative;
+  /* position: relative; */
+  border: 1px solid var(--border-main);
+  border-radius: 10px;
+  padding-left: 36px;
+  /* padding: 5px 14px 5px 36px; */
+
+  font-size: 14px;
+  color: var(--text-primary);
+  transition: all 0.2s ease;
+
+  /* width: 100%; */
+}
+
+.searchBox::placeholder {
+  color: var(--text-secondary);
+}
+
+.searchBox:focus {
+  border-color: var(--primary) !important;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
 }
 
 .icon {
   position: absolute;
-  z-index: 10;
-  /* left: 12px;
-  top: 50%; */
-  /* transform: translateY(-50%); */
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
   color: var(--text-secondary);
 }

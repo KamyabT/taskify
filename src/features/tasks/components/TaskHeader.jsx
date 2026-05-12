@@ -1,10 +1,8 @@
-import TableFilters from "./TableFilters";
+// import TableFilters from "./TableFilters";
 
-const TasksHeader = () => {
+const TasksHeader = ({ children }) => {
   return (
-    <div>
-      <TableFilters />
-    </div>
+    <>{children}</>
   );
 };
 
