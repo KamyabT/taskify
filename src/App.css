@@ -77,7 +77,7 @@ h6 {
   --warning-light: #fef3e0; /* pending light */
   --danger: #eb3253; /* overdue / error */
   --danger-light: #fee7eb; /* overdue light */
-  --info: #3b82f6; /* in progress */  
+  --info: #3b82f6; /* in progress */
   --info-light: #ebebfe; /* in progress light */
 }
 
@@ -98,7 +98,14 @@ cursor-pointer {
   cursor: pointer;
 }
 
+/*******************Select Design*******************/
 
-
-
-/**************************************/
+.select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-main);
+  outline: none;
+  color: #000000;
+  width: 125px;
+  gap: 8px;
+}
