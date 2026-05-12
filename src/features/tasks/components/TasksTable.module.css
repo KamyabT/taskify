@@ -1,11 +1,12 @@
 .tasksTableWrapper {
   display: flex;
+  flex-direction: column;
   background-color: var(--bg-card);
   padding: 16px;
   border-radius: 8px;
   border: 1px solid var(--border-main);
   min-width: 200px;
-  align-items: center;
+  /* align-items: center; */
  
  
  

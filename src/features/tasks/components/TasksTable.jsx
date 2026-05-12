@@ -1,6 +1,7 @@
 import TasksHeader from "./TaskHeader";
 import TableFilters from "./TableFilters";
 import style from "./TasksTable.module.css";
+import TableBody from "./TableBody";
 
 const TasksTable = () => {
   return (
@@ -8,6 +9,7 @@ const TasksTable = () => {
       <TasksHeader>
         <TableFilters />
       </TasksHeader>
+      <TableBody />
     </section>
   );
 };
