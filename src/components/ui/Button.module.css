@@ -3,6 +3,8 @@
   font-weight: 600;
 }
 
+/*******************Warning Button*******************/
+
 .warningBtn {
   background-color: var(--warning-bg);
   border: 1px solid var(--border-warning);
@@ -10,4 +12,24 @@
   color: var(--danger);
   padding: 6px 12px;
   font-weight: 600;
+}
+
+.warningBtn:hover {
+  color: white;
+  background-color: var(--warning-hover);
+  transition: all 0.3s ease;
+}
+
+/*******************Action Button*******************/
+
+.iconActionBtn {
+  background-color: transparent;
+  border: none;
+  margin: 0 8px 0 0;
+}
+
+.iconActionBtn:hover {
+  background-color: transparent;
+  transform: scale(1.1);
+  margin: 0 8px 0 0;
 }

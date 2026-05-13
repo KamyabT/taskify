@@ -59,7 +59,7 @@ h6 {
   --primary-light: #6366f1; /* هاور و حالت فعال */
   --primary-soft: #eef2ff; /* بک‌گراند لایت */
 
-  --bg-main: #f9fafb; /* بک‌گراند کل صفحه */
+  --bg-main: #fafbfd; /* بک‌گراند کل صفحه */
   --bg-sections: #fefefe;
   --bg-card: #ffffff; /* کارت‌ها */
   --bg-sidebar: #111827; /* سایدبار تیره */
@@ -76,13 +76,13 @@ h6 {
   --success-light: #e5f8e8; /* completed light */
   --warning: #f59e0b; /* pending */
   --warning-light: #fef3e0; /* pending light */
+  --warning-hover: rgb(206, 2, 2);
   --danger: #eb3253; /* overdue / error */
   --danger-light: #fee7eb; /* overdue light */
   --info: #3b82f6; /* in progress */
   --info-light: #ebebfe; /* in progress light */
 
   --warning-bg: #fef3f6;
-
 }
 
 /********************

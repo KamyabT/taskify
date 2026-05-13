@@ -4,7 +4,7 @@ import { Search } from "lucide-react";
 
 const TableFilters = () => {
   return (
-    <div className="d-flex align-items-center justify-content-between flex-grow-1">
+    <div className="d-flex align-items-center justify-content-between flex-grow-1 mb-4">
       <h6>All Tasks</h6>
       <div className="d-flex justify-content-between" style={{ position: "relative" }}>
         <Search size={16} className={style.icon} />
