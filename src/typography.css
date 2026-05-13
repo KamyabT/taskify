@@ -13,8 +13,19 @@
   font-weight: 600;
 }
 
+.text-card-value-medium {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.text-card-value-small {
+  font-size: 16px;
+  font-weight: 600;
+}
+
 .text-card-label {
   font-size: 13px;
+  font-weight: 600;
   color: var(--text-secondary);
 }
 
