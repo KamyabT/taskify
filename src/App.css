@@ -58,6 +58,7 @@ h6 {
   --primary: #4f46e5; /* بنفش-آبی اصلی (دکمه‌ها، اکشن‌ها) */
   --primary-light: #6366f1; /* هاور و حالت فعال */
   --primary-soft: #eef2ff; /* بک‌گراند لایت */
+  --primary-white: #fff;
 
   --bg-main: #fafbfd; /* بک‌گراند کل صفحه */
   --bg-sections: #fefefe;
@@ -74,15 +75,31 @@ h6 {
 
   --success: #26a155; /* completed */
   --success-light: #e5f8e8; /* completed light */
+  --success-light-bg: #e7faec;
+
+
   --warning: #f59e0b; /* pending */
   --warning-light: #fef3e0; /* pending light */
-  --warning-hover: rgb(206, 2, 2);
+  --warning-bg: #fef3f6;
+  --warning-light-bg: #fdf5e6;
+
+
+  --danger-hover: rgb(206, 2, 2);
   --danger: #eb3253; /* overdue / error */
   --danger-light: #fee7eb; /* overdue light */
-  --info: #3b82f6; /* in progress */
-  --info-light: #ebebfe; /* in progress light */
 
-  --warning-bg: #fef3f6;
+
+  --info: #2e55f3; /* in progress */
+  --info-light: #ebebfe; /* in progress light */
+  --info-light-bg: #ebf1fe; /* in progress light */
+
+  
+
+  --grey: #5f6781; /* متن کم‌اهمیت */
+  --grey-light-bg: #f1f2f7;
+
+  --purple: #8b5cf6; /* purple badge */
+  --purple-light-bg: #f3f0fe;
 }
 
 /********************

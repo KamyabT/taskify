@@ -20,7 +20,69 @@
   padding: 16px 12px;
 }
 
+/****************Color Badges*****************/
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.redBadge {
+  background-color: var(--danger-light);
+  color: var(--danger);
+}
+
+.yellowBadge {
+  background-color: var(--warning-light-bg);
+  color: var(--warning);
+}
+
+.purpleBadge {
+  background-color: var(--purple-light-bg);
+  color: var(--purple);
+}
+
+.successBadge {
+  background-color: var(--success-light-bg);
+  color: var(--success);
+}
+
+.pendingBadge {
+  background-color: var(--grey-light-bg);
+  color: var(--grey);
+}
+
+.infoBadge {
+  background-color: var(--info-light-bg);
+  color: var(--info);
+}
+
+/**************texts**************/
+
+.title {
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.desc {
+  color: var(--text-secondary);
+  font-weight: 400;
+  font-size: 14px;
+}
+
+.date {
+    color: var(--text-secondary);
+    font-weight: 500;
+    font-size: 14px;
+}
 
 
 
 
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+}

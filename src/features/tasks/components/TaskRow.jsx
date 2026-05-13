@@ -12,7 +12,7 @@ const TaskRow = () => {
   return (
     <>
       <div className={`${style.row} ${style.theadDesign}`}>
-        <div className="">
+        <div className="d-flex align-items-center">
           <input type="checkbox" />
         </div>
         <div className="">
@@ -35,24 +35,59 @@ const TaskRow = () => {
         </div>
       </div>
       <div className={`${style.row}`}>
-        <div className="">
+        <div className="d-flex align-items-center">
           <input type="checkbox" />
         </div>
         <div className="">
-          <h6>Design new landing page</h6>
-          <span>Create a modern and responsive landing page for</span>
+          <h6 className={`${style.title}`}>Design new landing page</h6>
+          <span className={`${style.desc}`}>
+            Create a modern and responsive landing page for
+          </span>
+        </div>
+        <div>
+          <span className={`${style.badge} ${style.yellowBadge}`}>
+            . Website Redesign
+          </span>
         </div>
         <div className="">
-          <p>. Website Redesign</p>
+          <span className={`${style.badge} ${style.redBadge}`}>High</span>
         </div>
         <div className="">
-          <p>High</p>
+          <span className={`${style.badge} ${style.successBadge}`}>Completed</span>
         </div>
         <div className="">
-          <p>In Progress</p>
+          <span className={`${style.date}`}>May 25, 2024</span>
         </div>
         <div className="">
-          <p>May 25, 2024</p>
+          <Button type="iconAction">
+            <SquarePen color="var(--text-secondary)" size={24} />
+          </Button>
+          <Button type="iconAction">
+            <Trash2 color="var(--text-secondary)" size={24} />
+          </Button>
+        </div>
+      </div>
+      <div className={`${style.row}`}>
+        <div className="d-flex align-items-center">
+          <input type="checkbox" />
+        </div>
+        <div className="">
+          <h6 className={`${style.title}`}>Design new landing page</h6>
+          <span className={`${style.desc}`}>
+            Create a modern and responsive landing page for
+          </span>
+        </div>
+        <div>
+          <span className={`${style.badge} ${style.purpleBadge}`}>. Backend API</span>
+        </div>
+        <div className="">
+          <span className={`${style.badge} ${style.infoBadge}`}>Low</span>
+        </div>
+        <div className="">
+          <span className={`${style.badge} ${style.pendingBadge}`}>To Do</span>
+        </div>
+        <div className="">
+          <span className={`${style.date}`}>May 25, 2024</span>
         </div>
         <div className="">
           <Button type="iconAction">

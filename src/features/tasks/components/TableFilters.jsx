@@ -32,7 +32,7 @@ const TableFilters = () => {
             <option value="">Sort by: Priority</option>
             <option value="">Sort by: Status</option>
           </select>
-          <Button type="warning">Clear Filters</Button>
+          <Button type="danger">Clear Filters</Button>
         </div>
       </div>
     </div>

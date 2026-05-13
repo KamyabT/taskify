@@ -5,7 +5,7 @@
 
 /*******************Warning Button*******************/
 
-.warningBtn {
+.dangerBtn {
   background-color: var(--warning-bg);
   border: 1px solid var(--border-warning);
   border-radius: 8px;
@@ -14,9 +14,9 @@
   font-weight: 600;
 }
 
-.warningBtn:hover {
+.dangerBtn:hover {
   color: white;
-  background-color: var(--warning-hover);
+  background-color: var(--danger-hover);
   transition: all 0.3s ease;
 }
 
