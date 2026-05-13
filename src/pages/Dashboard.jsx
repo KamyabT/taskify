@@ -34,17 +34,11 @@ const Dashboard = () => {
       <Sidebar />
       <section className="d-flex flex-column px-4 py-3" style={{ width: "100vw" }}>
         <Header />
-        <div className={`${style.statsRow} mt-4 flex-wrap`}>
-          <div className={style.cardsWrapper}>
-            {stats.map(({ title, value, change }) => {
-              return (
-                <StatsCards key={title} title={title} value={value} change={change} />
-              );
-            })}
-          </div>
-          <div className={style.chartWrapper}>
-            <CompletionChart />
-          </div>
+        <div className={`${style.statsRow} mt-4`}>
+          {stats.map(({ title, value, change }) => {
+            return <StatsCards key={title} title={title} value={value} change={change} />;
+          })}
+          <CompletionChart />
         </div>
         <div>
           <TasksTable />

@@ -74,15 +74,22 @@
 }
 
 .date {
-    color: var(--text-secondary);
-    font-weight: 500;
-    font-size: 14px;
+  color: var(--text-secondary);
+  font-weight: 500;
+  font-size: 14px;
 }
 
-
-
-
 input[type="checkbox"] {
-  width: 18px;
-  height: 18px;
+  width: 20px;
+  height: 20px;
+  accent-color: var(--primary);
+  /* appearance: none;
+  border: 1.5px solid var(--border-main);
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s ease; */
+}
+
+input[type="checkbox"]:checked {
+  border-color: var(--primary);
 }

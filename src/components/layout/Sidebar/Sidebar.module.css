@@ -16,7 +16,7 @@
 }
 
 .sidebar {
-  width: 250px;
+  width: 300px;
   height: 100vh;
   background-color: var(--bg-sections);
   border-right: 1px solid var(--border-main);

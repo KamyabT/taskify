@@ -2,23 +2,22 @@
   display: flex;
 }
 
-/* .statsCard:last-child {
-  margin-right: 0;
-} */
 
 .statsRow {
-  display: flex;
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, 1fr)
+    1.5fr;
+
   gap: 16px;
+
+  align-items: stretch;
 }
 
-/* کارت‌ها */
-.cardsWrapper {
-  display: flex;
-  gap: 16px;
-  flex: 3; /* مهم */
-}
 
 /* چارت */
 .chartWrapper {
   flex: 1; /* مهم */
 }
+
