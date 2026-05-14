@@ -1,0 +1,27 @@
+.chartCard {
+  background-color: var(--bg-card);
+
+  border: 1px solid var(--border-main);
+
+  border-radius: 16px;
+
+  padding: 20px;
+
+  height: 300px;
+}
+
+.header {
+  display: flex;
+
+  align-items: center;
+
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.chartWrapper {
+  width: 100%;
+
+  height: calc(100% - 50px);
+}

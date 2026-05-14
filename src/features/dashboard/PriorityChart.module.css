@@ -1,0 +1,39 @@
+.chartCard {
+  background: var(--bg-card);
+  border: 1px solid var(--border-main);
+  border-radius: 12px;
+  width: 100%;
+  padding: 20px;
+}
+
+.chartContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+   gap: 16px;
+}
+
+.legend {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+
+.color {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+} 
+
+.chartWrapper {
+  width: 180px;
+  height: 180px;
+}

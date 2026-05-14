@@ -1,5 +1,5 @@
 .dashboard {
-  display: flex;
+  display: flex;;
 }
 
 
@@ -16,8 +16,10 @@
 }
 
 
-/* چارت */
-.chartWrapper {
-  flex: 1; /* مهم */
-}
 
+
+.charts {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 16px;
+}
