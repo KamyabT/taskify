@@ -8,17 +8,17 @@ const PriorityChart = () => {
     {
       priority: "High",
       value: tasks.filter((task) => task.priority === "High").length,
-      color: "#ff4d6d",
+      color: "var(--danger)",
     },
     {
       priority: "Medium",
       value: tasks.filter((task) => task.priority === "Medium").length,
-      color: "#f59e0b",
+      color: "var(--warning)",
     },
     {
       priority: "Low",
       value: tasks.filter((task) => task.priority === "Low").length,
-      color: "#22c55e",
+      color: "var(--success)",
     },
   ];
 
