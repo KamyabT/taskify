@@ -37,7 +37,7 @@ const tasks = [
   {
     id: 4,
     title: "MVP Development",
-    project: "Product Development",
+    project: "Product Developments",
     description:
       "Release an MVP version of the project to gather user feedback and validate the concept.",
     dueDate: "2026-05-13",
