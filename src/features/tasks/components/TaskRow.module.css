@@ -59,6 +59,11 @@
   color: var(--info);
 }
 
+.orangeBadge {
+  background-color: var(--orange-light-bg);
+  color: var(--orange);
+}
+
 /**************texts**************/
 
 .title {

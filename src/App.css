@@ -84,15 +84,18 @@ h6 {
   --warning-light-bg: #fdf5e6;
 
 
-  --danger-hover: rgb(206, 2, 2);
   --danger: #eb3253; /* overdue / error */
   --danger-light: #fee7eb; /* overdue light */
+  --danger-hover: rgb(206, 2, 2);
 
 
   --info: #2e55f3; /* in progress */
   --info-light: #ebebfe; /* in progress light */
   --info-light-bg: #ebf1fe; /* in progress light */
 
+  --orange: #ff7200;
+  --orange-light: #fef6eb; /* orange light */
+  --orange-light-bg: #fef6eb;
   
 
   --grey: #5f6781; /* متن کم‌اهمیت */

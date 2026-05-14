@@ -1,13 +1,12 @@
-import style from "./TaskRow.module.css";
-import Button from "../../../components/ui/Button";
-import { SquarePen, Trash2 } from "lucide-react";
-import TableHeader from "./TableHeader";
 import tasks from "../../../data/tasks";
+import Button from "../../../components/ui/Button";
+import taskStyles from "../../../utils/taskStyles";
+import style from "./TaskRow.module.css";
+import { SquarePen, Trash2 } from "lucide-react";
 
 const TaskRow = () => {
   return (
     <>
-      <TableHeader />
       {tasks.map((task) => {
         return (
           <div className={`${style.row}`}>
@@ -19,15 +18,19 @@ const TaskRow = () => {
               <span className={`${style.desc}`}>{task.description}</span>
             </div>
             <div>
-              <span className={`${style.badge} ${style.yellowBadge}`}>
+              <span className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}>
                 . {task.project}
               </span>
             </div>
             <div className="">
-              <span className={`${style.badge} ${style.redBadge}`}>{task.priority}</span>
+              <span
+                className={`${style.badge} ${style[taskStyles.priority[task.priority]]}`}
+              >
+                {task.priority}
+              </span>
             </div>
             <div className="">
-              <span className={`${style.badge} ${style.successBadge}`}>
+              <span className={`${style.badge} ${style[taskStyles.status[task.status]]}`}>
                 {task.status}
               </span>
             </div>
