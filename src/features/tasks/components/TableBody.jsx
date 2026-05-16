@@ -1,11 +1,11 @@
 import TableHeader from "./TableHeader";
 import TaskRow from "./TaskRow";
 
-const TableBody = () => {
+const TableBody = ({ tasks }) => {
   return (
     <>
       <TableHeader />
-      <TaskRow />
+      <TaskRow tasks={tasks} />
     </>
   );
 };

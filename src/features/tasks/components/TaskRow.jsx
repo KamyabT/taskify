@@ -1,10 +1,9 @@
-import tasks from "../../../data/tasks";
 import Button from "../../../components/ui/Button";
 import taskStyles from "../../../utils/taskStyles";
 import style from "./TaskRow.module.css";
 import { SquarePen, Trash2 } from "lucide-react";
 
-const TaskRow = () => {
+const TaskRow = ({ tasks }) => {
   return (
     <>
       {tasks.map((task) => {
@@ -18,7 +17,9 @@ const TaskRow = () => {
               <span className={`${style.desc}`}>{task.description}</span>
             </div>
             <div>
-              <span className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}>
+              <span
+                className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}
+              >
                 . {task.project}
               </span>
             </div>

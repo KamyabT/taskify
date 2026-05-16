@@ -2,7 +2,9 @@ import Button from "../../../components/ui/Button";
 import style from "./TableFilters.module.css";
 import { Search } from "lucide-react";
 
-const TableFilters = () => {
+const TableFilters = ({ searchTerm, setSearchTerm }) => {
+
+
   return (
     <div className="d-flex align-items-center justify-content-between flex-grow-1 mb-4">
       <h6>All Tasks</h6>
@@ -12,6 +14,8 @@ const TableFilters = () => {
           className={`${style.searchBox} me-4`}
           type="text"
           placeholder="Search tasks..."
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
         />
         <div>
           <select className="select text-card-label me-3" name="" id="">
