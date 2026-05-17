@@ -5,7 +5,7 @@ const TableBody = ({ tasks }) => {
   return (
     <>
       <TableHeader />
-      <TaskRow tasks={tasks} />
+      {tasks.map((task)=>  <TaskRow key={task.id} task={task} />)}
     </>
   );
 };
