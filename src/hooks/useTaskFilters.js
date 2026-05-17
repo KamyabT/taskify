@@ -2,18 +2,20 @@ import { useReducer } from "react";
 
 import { filtersReducer, initialState } from "../reducers/filtersReducer";
 
-function useTaskFilters(tasks) {
+export function useTaskFilters(tasks) {
+  console.log(tasks, "tasks in useTaskFilters");
+
   const [filters, dispatch] = useReducer(filtersReducer, initialState);
 
   let filteredTasks = [...tasks];
 
   filteredTasks = filteredTasks.filter((task) => {
-    if (!filters.search) return task;
-    else {
+    console.log(filters.search, "filters.search in useTaskFilters");
+    return (
       task.title.toLowerCase().includes(filters.search.toLowerCase()) ||
-        task.description.toLowerCase().includes(filters.search.toLowerCase()) ||
-        task.project.toLowerCase().includes(filters.search.toLowerCase());
-    }
+      task.description.toLowerCase().includes(filters.search.toLowerCase()) ||
+      task.project.toLowerCase().includes(filters.search.toLowerCase())
+    );
   });
 
   if (filters.status !== "all") {
@@ -30,6 +32,17 @@ function useTaskFilters(tasks) {
     });
   }
 
+  if (filters.sortBy === "status") {
+    const statusOrder = {
+    "Overdue": 1,
+      "To Do": 2,
+      "In-Progress": 3,
+      "Completed": 4,
+    };
+
+    filteredTasks.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
+  }
+
   if (filters.sortBy === "priority") {
     const priorityOrder = {
       High: 3,
@@ -40,7 +53,15 @@ function useTaskFilters(tasks) {
     filteredTasks.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]);
   }
 
-//   if (filters.sortBy === "newest") {
-//     filteredTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-//   }
+  console.log(filteredTasks, "filteredTasks in useTaskFilters");
+
+  return {
+    filters,
+    filteredTasks,
+    dispatch,
+  };
+
+  //   if (filters.sortBy === "newest") {
+  //     filteredTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
+  //   }
 }

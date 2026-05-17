@@ -1,11 +1,11 @@
-const initialState = {
+export const initialState = {
   search: "",
   status: "all",
   priority: "all",
   sortBy: "newest",
 };
 
-function filtersReducer(state, action) {
+export function filtersReducer(state, action) {
   switch (action.type) {
     case "SET_SEARCH":
       return {

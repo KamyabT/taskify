@@ -1,27 +1,15 @@
 import TableFilters from "./TableFilters";
 import TableBody from "./TableBody";
-import { useState } from "react";
+import { useTaskFilters } from "../../../hooks/useTaskFilters";
 import tasks from "../../../data/tasks";
 import style from "./TasksTable.module.css";
 
 const TasksTable = () => {
-  const [searchTerm, setSearchTerm] = useState("");
-
-  const filteredTasks = tasks.filter((task) => {
-    if (!searchTerm) return task;
-    else {
-      const query = searchTerm.toLowerCase();
-      return (
-        task.title.includes(query) ||
-        task.description.includes(query) ||
-        task.project.includes(query)
-      );
-    }
-  });
+  const { filters, dispatch, filteredTasks } = useTaskFilters(tasks);
 
   return (
     <section className={`${style.tasksTableWrapper} mt-4`}>
-      <TableFilters searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+      <TableFilters filters={filters} dispatch={dispatch} />
       <TableBody tasks={filteredTasks} />
     </section>
   );
