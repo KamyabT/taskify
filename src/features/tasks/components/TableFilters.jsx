@@ -57,7 +57,9 @@ const TableFilters = ({ filters, dispatch }) => {
             <option value="priority">Sort by: Priority</option>
             <option value="status">Sort by: Status</option>
           </select>
-          <Button type="danger">Clear Filters</Button>
+          <Button type="danger" onClick={() => dispatch({ type: "CLEAR_FILTERS" })}>
+            Clear Filters
+          </Button>
         </div>
       </div>
     </div>

@@ -2,7 +2,7 @@ export const initialState = {
   search: "",
   status: "all",
   priority: "all",
-  sortBy: "newest",
+  sortBy: "Default",
 };
 
 export function filtersReducer(state, action) {
@@ -30,7 +30,10 @@ export function filtersReducer(state, action) {
     case "CLEAR_FILTERS":
       return {
         ...state,
-        status: action.payload,
+        search: "",
+        status: "all",
+        priority: "all",
+        sortBy: "Default",
       };
     default:
       return state;
