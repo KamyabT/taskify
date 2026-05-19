@@ -3,7 +3,7 @@
   border-radius: 8px;
   border: 1px solid var(--border-main);
   outline: none;
-  color: #000000;
+  color: var(--text-secondary);
   gap: 8px;
 }
 
@@ -14,10 +14,31 @@
   outline: none;
 }
 
+.sectionTypo {
+  color: var(--text-primary-light);
+  font-weight: 500;
+}
+
 .header {
   margin-bottom: 18px;
 }
 
 .taskTitle {
+  margin-bottom: 18px;
+}
+
+.description {
+  margin-bottom: 18px;
+}
+
+.projectContainter {
+  margin-bottom: 18px;
+}
+
+.statusContainer {
+  margin-bottom: 18px;
+}
+
+.tags {
   margin-bottom: 18px;
 }

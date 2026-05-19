@@ -61,3 +61,14 @@
   color: var(--text-secondary);
   padding: 6px 12px;
 }
+
+
+/****************************************/
+.taskFormActionBtn {
+  margin-right: 8px;
+  font-weight: 500;
+  background-color: var(--primary-white);
+  border: 1px solid var(--border-main);
+  padding: 6px 12px;
+  color: var(--text-secondary);
+}

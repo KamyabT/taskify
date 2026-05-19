@@ -67,6 +67,7 @@ h6 {
   --bg-hover: #f4f3fe;
 
   --text-primary: #111827; /* متن اصلی */
+  --text-primary-light: #4a4d53;
   --text-secondary: #6b7280; /* متن کم‌اهمیت */
   --text-light: #9ca3af; /* placeholder / label */
 
@@ -119,7 +120,6 @@ cursor-pointer {
 }
 
 /*******************Select Design*******************/
-
 
 .input {
   padding: 8px;
