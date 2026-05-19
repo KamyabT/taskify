@@ -11,7 +11,6 @@
   border-radius: 8px;
   color: var(--danger);
   padding: 6px 12px;
-  font-weight: 600;
 }
 
 .dangerBtn:hover {
@@ -32,4 +31,33 @@
   background-color: transparent;
   transform: scale(1.1);
   margin: 0 8px 0 0;
+}
+
+/*******************Header Action Button*******************/
+
+.headerActionBtn {
+  background-color: var(--primary);
+  font-weight: 500;
+  border: 1px solid transparent;
+  color: var(--primary-white);
+  padding: 6px 12px;
+}
+
+/*************************Submit/Cancel Buttons********************/
+
+.submitBtn {
+  background-color: var(--primary);
+  font-weight: 500;
+  border: 1px solid transparent;
+  color: var(--primary-white);
+  padding: 6px 12px;
+}
+
+.cancelBtn {
+  background-color: var(--primary-white);
+  margin-right: 8px;
+  font-weight: 500;
+  border: 1px solid var(--border-main);
+  color: var(--text-secondary);
+  padding: 6px 12px;
 }

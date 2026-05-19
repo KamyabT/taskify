@@ -28,7 +28,7 @@ const OverViewChart = () => {
       <div className={style.header}>
         <h5>Tasks Overview</h5>
 
-        <select className="select text-card-label">
+        <select className={`${style.select} text-card-label`}>
           <option value="">This Month</option>
           <option value="">This Week</option>
           <option value="">This Day</option>

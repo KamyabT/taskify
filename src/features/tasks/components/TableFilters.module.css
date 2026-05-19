@@ -1,3 +1,14 @@
+.select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-main);
+  outline: none;
+  color: #000000;
+  width: 125px;
+  gap: 8px;
+}
+
+
 .searchBox {
   /* position: relative; */
   border: 1px solid var(--border-main);

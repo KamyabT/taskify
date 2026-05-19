@@ -77,17 +77,14 @@ h6 {
   --success-light: #e5f8e8; /* completed light */
   --success-light-bg: #e7faec;
 
-
   --warning: #f59e0b; /* pending */
   --warning-light: #fef3e0; /* pending light */
   --warning-bg: #fef3f6;
   --warning-light-bg: #fdf5e6;
 
-
   --danger: #eb3253; /* overdue / error */
   --danger-light: #fee7eb; /* overdue light */
   --danger-hover: rgb(206, 2, 2);
-
 
   --info: #2e55f3; /* in progress */
   --info-light: #ebebfe; /* in progress light */
@@ -96,7 +93,6 @@ h6 {
   --orange: #ff7200;
   --orange-light: #fef6eb; /* orange light */
   --orange-light-bg: #fef6eb;
-  
 
   --grey: #5f6781; /* متن کم‌اهمیت */
   --grey-light-bg: #f1f2f7;
@@ -124,12 +120,10 @@ cursor-pointer {
 
 /*******************Select Design*******************/
 
-.select {
+
+.input {
   padding: 8px;
   border-radius: 8px;
   border: 1px solid var(--border-main);
   outline: none;
-  color: #000000;
-  width: 125px;
-  gap: 8px;
 }

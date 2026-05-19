@@ -1,0 +1,23 @@
+.select {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-main);
+  outline: none;
+  color: #000000;
+  gap: 8px;
+}
+
+.input {
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid var(--border-main);
+  outline: none;
+}
+
+.header {
+  margin-bottom: 18px;
+}
+
+.taskTitle {
+  margin-bottom: 18px;
+}

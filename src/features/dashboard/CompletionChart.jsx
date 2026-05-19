@@ -13,7 +13,7 @@ const CompletionChart = () => {
     <div className={style.CompletionChart}>
       <div className="d-flex align-items-center justify-content-between">
         <p className="text-card-value-medium">Completion Rate</p>
-        <select className="select text-card-label" name="" id="">
+        <select className={`${style.select} text-card-label`}  name="" id="">
           <option value="">This Month</option>
           <option value="">This Week</option>
           <option value="">This Day</option>

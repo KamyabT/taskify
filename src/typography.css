@@ -3,6 +3,11 @@
   font-weight: 600;
 }
 
+.text-title-medium {
+  font-size: 22px;
+  font-weight: 600;
+}
+
 .text-section {
   font-size: 18px;
   font-weight: 600;
@@ -32,4 +37,10 @@
 .text-small {
   font-size: 12px;
   color: var(--text-secondary);
+}
+
+.text-description {
+  font-size: 16px;
+  color: var(--text-secondary);
+  font-weight: 400;
 }

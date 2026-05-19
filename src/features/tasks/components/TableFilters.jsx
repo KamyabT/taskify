@@ -18,7 +18,7 @@ const TableFilters = ({ filters, dispatch }) => {
         />
         <div>
           <select
-            className="select text-card-label me-3"
+            className={`${style.select} text-card-label me-3`}
             name=""
             id=""
             value={filters.status}
@@ -33,7 +33,7 @@ const TableFilters = ({ filters, dispatch }) => {
             <option value="Overdue">Overdue</option>
           </select>
           <select
-            className="select text-card-label me-3"
+            className={`${style.select} text-card-label me-3`}
             name=""
             id=""
             value={filters.priority}
@@ -45,7 +45,7 @@ const TableFilters = ({ filters, dispatch }) => {
             <option value="Low">Low</option>
           </select>
           <select
-            className="select text-card-label me-3"
+            className={`${style.select} text-card-label me-3`}
             name=""
             id=""
             value={filters.sortBy}

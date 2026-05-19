@@ -1,3 +1,4 @@
+import { useState } from "react";
 import Header from "../components/layout/Header/Header";
 import Sidebar from "../components/layout/Sidebar/Sidebar";
 import CompletionChart from "../features/dashboard/CompletionChart";
@@ -6,6 +7,8 @@ import TasksTable from "../features/tasks/components/TasksTable";
 import style from "./Dashboard.module.css";
 import OverViewChart from "../features/dashboard/OverViewChart";
 import PriorityChart from "../features/dashboard/PriorityChart";
+import Modal from "../components/ui/Modal/Modal";
+import AddTaskForm from "../features/tasks/components/AddTaskForm";
 
 const stats = [
   {
@@ -31,6 +34,8 @@ const stats = [
 ];
 
 const Dashboard = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   return (
     <main className={style.dashboard}>
       <Sidebar />
@@ -38,7 +43,12 @@ const Dashboard = () => {
         className="d-flex flex-column px-4 py-3"
         style={{ width: "calc(100% - 300px)", left: "300px", position: "relative" }}
       >
-        <Header />
+        {isModalOpen && (
+          <Modal>
+            <AddTaskForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+          </Modal>
+        )}
+        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
         <div className={`${style.statsRow} mt-4`}>
           {stats.map(({ title, value, change }) => {
             return <StatsCards key={title} title={title} value={value} change={change} />;
