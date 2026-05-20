@@ -1,7 +1,6 @@
-import { useState } from "react";
 import style from "./AddTaskForm.module.css";
 import Button from "../../../components/ui/Button";
-import { createTask } from "../../../services/createTask";
+import { useCreateTask } from "../../../hooks/useCreateTask";
 import {
   Bell,
   Flag,
@@ -14,29 +13,9 @@ import {
 } from "lucide-react";
 
 const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
-  const [taskTitle, setTaskTitle] = useState("");
-  const [taskDescription, setTaskDescription] = useState("");
-  const [taskProject, setTaskProject] = useState("Frontend");
-  const [taskPriority, setTaskPriority] = useState("Medium");
-  const [taskStatus, setTaskStatus] = useState("To Do");
-  const [taskDueDate, setTaskDueDate] = useState("");
-  const [taskTags, setTaskTags] = useState("");
-
-  function handleCreateTask(e) {
-    e.preventDefault();
-    console.log("submit clicked");
-    const newRecord = {
-      title: taskTitle,
-      description: taskDescription,
-      dueData: taskDueDate,
-      priority: taskPriority,
-      status: taskStatus,
-      project: taskProject,
-      projectTag: taskTags,
-    };
-    console.log(newRecord, "new record before sending to api");
-    createTask(newRecord);
-  }
+  const { newTask, dispatch, handleCreateTask, error } = useCreateTask(() =>
+    setIsModalOpen(!isModalOpen),
+  );
 
   return (
     <form onSubmit={(e) => handleCreateTask(e)}>
@@ -63,9 +42,10 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
           className="input"
           type="text"
           placeholder="Enter task title..."
-          value={taskTitle}
-          onChange={(e) => setTaskTitle(e.target.value)}
+          value={newTask.title}
+          onChange={(e) => dispatch({ type: "SET_TITLE", payload: e.target.value })}
         />
+        <span className="d-none">Filling title is required</span>
       </div>
       <div className={`${style.description} d-flex flex-column`}>
         <label
@@ -80,8 +60,8 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
           rows="4"
           cols="50"
           placeholder="Enter task description (optional)"
-          value={taskDescription}
-          onChange={(e) => setTaskDescription(e.target.value)}
+          value={newTask.description}
+          onChange={(e) => dispatch({ type: "SET_DESCRIPTION", payload: e.target.value })}
         ></textarea>
       </div>
       <div className={`${style.projectContainter} d-flex flex-grow-1`}>
@@ -97,8 +77,8 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
             className={`${style.select} text-card-label me-3`}
             name=""
             id=""
-            value={taskProject}
-            onChange={(e) => setTaskProject(e.target.value)}
+            value={newTask.project}
+            onChange={(e) => dispatch({ type: "SET_PROJECT", payload: e.target.value })}
           >
             <option value="Frontend">Frontend</option>
             <option value="Backend">Backend</option>
@@ -116,8 +96,8 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
             className={`${style.select} text-card-label me-3`}
             name=""
             id=""
-            value={taskPriority}
-            onChange={(e) => setTaskPriority(e.target.value)}
+            value={newTask.priority}
+            onChange={(e) => dispatch({ type: "SET_PRIORITY", payload: e.target.value })}
           >
             <option value="High">High</option>
             <option value="Medium">Medium</option>
@@ -138,8 +118,8 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
             className={`${style.select} text-card-label me-3`}
             name=""
             id=""
-            value={taskStatus}
-            onChange={(e) => setTaskStatus(e.target.value)}
+            value={newTask.status}
+            onChange={(e) => dispatch({ type: "SET_STATUS", payload: e.target.value })}
           >
             <option value="To Do">To Do</option>
             <option value="In-Progress">In-Progress</option>
@@ -155,13 +135,13 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
             <Calendar size={18} color="#a5aebf" style={{ marginRight: "8px" }} />
             Due Date
           </label>
-          <select
-            className={`${style.select} text-card-label me-3`}
-            name=""
-            id=""
-            value={taskDueDate}
-            onChange={(e) => setTaskDueDate(e.target.value)}
-          ></select>
+          <input
+            type="date"
+            className="input"
+            placeholder="Select your due date"
+            value={newTask.dueDate}
+            onChange={(e) => dispatch({ type: "SET_DUE_DATE", payload: e.target.value })}
+          />
         </div>
       </div>
       <div className={`${style.tags} d-flex flex-column`}>
@@ -176,19 +156,24 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
           className="input"
           type="text"
           placeholder="Add tags..."
-          value={taskTags}
-          onChange={(e) => setTaskTags(e.target.value)}
+          value={newTask.tags}
+          onChange={(e) => dispatch({ type: "SET_TAGS", payload: e.target.value })}
         />
       </div>
       <Button type="transparentAction">
         <Bell size={18} color="#a5aebf" />
         <span style={{ marginLeft: "8px", fontSize: "14px" }}>Set reminder</span>
       </Button>
-      <div className="d-flex justify-content-end">
-        <Button type="Cancel" onClick={() => setIsModalOpen(!isModalOpen)}>
-          Cancel
-        </Button>
-        <Button type="Submit">Create Task +</Button>
+      <div className="d-flex justify-content-between align-items-center">
+        <div className="d-flex align-items-center">
+          {error && <p className="text-danger">{error}</p>}
+        </div>
+        <div>
+          <Button type="Cancel" onClick={() => setIsModalOpen(!isModalOpen)}>
+            Cancel
+          </Button>
+          <Button type="Submit">Create Task +</Button>
+        </div>
       </div>
     </form>
   );
