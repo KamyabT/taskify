@@ -11,7 +11,7 @@ const Actions = ({ isModalOpen, setIsModalOpen }) => {
         <Moon size={24} color="#a5aebf" />
       </div>
       <div>
-        <Button type="headerAction" onClick={() => setIsModalOpen(!isModalOpen)}>
+        <Button type="Submit" onClick={() => setIsModalOpen(!isModalOpen)}>
           + Add Task
         </Button>
       </div>

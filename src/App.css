@@ -59,6 +59,8 @@ h6 {
   --primary-light: #6366f1; /* هاور و حالت فعال */
   --primary-soft: #eef2ff; /* بک‌گراند لایت */
   --primary-white: #fff;
+  --primary-black: #111827;
+  --primary-black-light: #4a4d53;
 
   --bg-main: #fafbfd; /* بک‌گراند کل صفحه */
   --bg-sections: #fefefe;

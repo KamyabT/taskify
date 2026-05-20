@@ -1,6 +1,7 @@
 .button {
   border-radius: 8px;
   font-weight: 600;
+  padding: 6px 12px;
 }
 
 /*******************Warning Button*******************/
@@ -33,38 +34,44 @@
   margin: 0 8px 0 0;
 }
 
-/*******************Header Action Button*******************/
 
-.headerActionBtn {
+/*********************************Buttons*****************************/
+
+/************Submit************/
+
+.SubmitBtn {
   background-color: var(--primary);
-  font-weight: 500;
   border: 1px solid transparent;
   color: var(--primary-white);
-  padding: 6px 12px;
 }
 
-/*************************Submit/Cancel Buttons********************/
-
-.submitBtn {
-  background-color: var(--primary);
-  font-weight: 500;
-  border: 1px solid transparent;
+.SubmitBtn:hover {
+  background-color: var(--success);
+  border: 1px solid var(--border-main);
+  transition: all 0.3s ease;
   color: var(--primary-white);
-  padding: 6px 12px;
 }
 
-.cancelBtn {
+/************Cancel************/
+.CancelBtn {
   background-color: var(--primary-white);
   margin-right: 8px;
-  font-weight: 500;
   border: 1px solid var(--border-main);
   color: var(--text-secondary);
-  padding: 6px 12px;
+}
+
+.CancelBtn:hover {
+  background-color: var(--danger-light);
+  border: 1px solid var(--border-warning);
+  transition: all 0.3s ease;
+  color: var(--danger-hover);
 }
 
 
-/****************************************/
-.taskFormActionBtn {
+
+/************Action Transparent Button************/
+
+.transparentActionBtn {
   margin-right: 8px;
   font-weight: 500;
   background-color: var(--primary-white);
