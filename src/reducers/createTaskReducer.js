@@ -5,7 +5,7 @@ export const recordInitialState = {
   priority: "Medium",
   status: "To Do",
   dueDate: "",
-  tags: "",
+  projectTag: "",
 };
 
 export function createTaskReducer(state, action) {
@@ -44,7 +44,7 @@ export function createTaskReducer(state, action) {
     case "SET_TAGS":
       return {
         ...state,
-        tags: action.payload,
+        projectTag: action.payload,
       };
     default:
       return state;
