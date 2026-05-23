@@ -13,7 +13,6 @@ export function useCreateTask(onSuccess) {
       await createTask(newTask);
       onSuccess();
     } catch (err) {
-      // console.error("Error creating task:", err);
       setError("Failed to create task. Please try again.");
     }
   }

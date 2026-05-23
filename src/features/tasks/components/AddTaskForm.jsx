@@ -12,10 +12,8 @@ import {
   CircleX,
 } from "lucide-react";
 
-const AddTaskForm = ({ isModalOpen, setIsModalOpen }) => {
-  const { newTask, dispatch, handleCreateTask, error } = useCreateTask(() =>
-    setIsModalOpen(!isModalOpen),
-  );
+const AddTaskForm = ({ isModalOpen, setIsModalOpen, onSuccess }) => {
+  const { newTask, dispatch, handleCreateTask, error } = useCreateTask(onSuccess);
 
   return (
     <form onSubmit={(e) => handleCreateTask(e)}>

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Header from "../components/layout/Header/Header";
 import Sidebar from "../components/layout/Sidebar/Sidebar";
 import CompletionChart from "../features/dashboard/CompletionChart";
@@ -9,6 +9,7 @@ import OverViewChart from "../features/dashboard/OverViewChart";
 import PriorityChart from "../features/dashboard/PriorityChart";
 import Modal from "../components/ui/Modal/Modal";
 import AddTaskForm from "../features/tasks/components/AddTaskForm";
+import { getTasks } from "../services/tasks";
 
 const stats = [
   {
@@ -34,7 +35,26 @@ const stats = [
 ];
 
 const Dashboard = () => {
+  const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+  async function fetchTasks() {
+    try {
+      const data = await getTasks();
+      setTasks(data);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
+
+  function handleTaskCreated() {
+    fetchTasks();
+    setIsModalOpen(false);
+  }
 
   return (
     <main className={style.dashboard}>
@@ -45,7 +65,7 @@ const Dashboard = () => {
       >
         {isModalOpen && (
           <Modal>
-            <AddTaskForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen}/>
+            <AddTaskForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onSuccess={handleTaskCreated}/>
           </Modal>
         )}
         <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
@@ -60,7 +80,7 @@ const Dashboard = () => {
           <PriorityChart />
         </div>
         <div>
-          <TasksTable />
+          <TasksTable tasks={tasks} />
         </div>
       </section>
     </main>
