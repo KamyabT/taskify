@@ -37,8 +37,10 @@ const stats = [
 const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   async function fetchTasks() {
+    setIsLoading(true);
     try {
       const data = await getTasks();
       setTasks(data);
@@ -80,7 +82,7 @@ const Dashboard = () => {
           <PriorityChart />
         </div>
         <div>
-          <TasksTable tasks={tasks} />
+          <TasksTable tasks={tasks} isLoading={isLoading} />
         </div>
       </section>
     </main>
