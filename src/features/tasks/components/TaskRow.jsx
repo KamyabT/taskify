@@ -2,6 +2,7 @@ import Button from "../../../components/ui/Button";
 import taskStyles from "../../../utils/taskStyles";
 import style from "./TaskRow.module.css";
 import { SquarePen, Trash2 } from "lucide-react";
+import { format, formatDistance } from "date-fns";
 
 const TaskRow = ({ task, handleDelete }) => {
   return (
@@ -31,7 +32,15 @@ const TaskRow = ({ task, handleDelete }) => {
         </span>
       </div>
       <div className="">
-        <span className={`${style.date}`}>{task.dueDate}</span>
+        <span className={`${style.date}`}>{format(task.dueDate, "MM/dd/yyyy")}</span>
+      </div>
+      <div className="">
+        <span className={`${style.date}`}>{format(task.dueDate, "MM/dd/yyyy")}</span>
+      </div>
+      <div className="">
+        <span className={`${style.date}`}>
+          {formatDistance(task.dueDate, new Date(), { addSuffix: true })}
+        </span>
       </div>
       <div className="">
         <Button type="iconAction">

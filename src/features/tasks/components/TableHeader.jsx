@@ -19,7 +19,13 @@ const TableHeader = () => {
         <h6>Status</h6>
       </div>
       <div className="">
+        <h6>Creation Date</h6>
+      </div>
+      <div className="">
         <h6>Due Date</h6>
+      </div>
+      <div className="">
+        <h6>Remaining Time</h6>
       </div>
       <div className="">
         <h6>Actions</h6>

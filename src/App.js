@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route , Navigate} from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Calendar from "./pages/Calendar";
 import Tasks from "./pages/Tasks";
@@ -13,6 +13,7 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="/" element={<Navigate to="/dashboard" />} />
         <Route path="/dashboard" element={<Dashboard />}></Route>
         <Route path="/tasks" element={<Tasks />}></Route>
         <Route path="/calendar" element={<Calendar />}></Route>
