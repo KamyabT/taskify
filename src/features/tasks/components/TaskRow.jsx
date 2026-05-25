@@ -42,10 +42,9 @@ const TaskRow = ({ task, handleDelete }) => {
       <div className="">
         <span
           className={`${style.date}`}
-          style={{ direction: "rtl", textAlign: "right" }}
+          
         >
-          {"\u202B" +
-            formatDistance(new Date(task.dueDate), new Date(), {
+          {formatDistance(new Date(task.dueDate), new Date(), {
               addSuffix: true,
             })}
         </span>
