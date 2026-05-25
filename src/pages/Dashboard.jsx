@@ -9,7 +9,7 @@ import OverViewChart from "../features/dashboard/OverViewChart";
 import PriorityChart from "../features/dashboard/PriorityChart";
 import Modal from "../components/ui/Modal/Modal";
 import AddTaskForm from "../features/tasks/components/AddTaskForm";
-import { getTasks } from "../services/tasks";
+import { getTasks, deleteTask } from "../services/tasks";
 
 const stats = [
   {
@@ -52,11 +52,11 @@ const Dashboard = () => {
     }
   }
 
-  async function deleteTask(id) {
+  async function taskRemoval(id) {
     setIsLoading(true);
     try {
-      const data = await deleteTask(id);
-      setTasks(data);
+      await deleteTask(id);
+      await fetchTasks()
     } catch (error) {
       console.log(error);
     }
@@ -73,7 +73,7 @@ const Dashboard = () => {
 
   function handleDelete(task) {
     console.log(task.id);
-    deleteTask(task.id);
+    taskRemoval(task.id);
   }
 
   return (

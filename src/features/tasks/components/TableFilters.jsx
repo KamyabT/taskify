@@ -3,7 +3,6 @@ import style from "./TableFilters.module.css";
 import { Search } from "lucide-react";
 
 const TableFilters = ({ filters, dispatch }) => {
-  console.log(filters, "filters in table filters");
   return (
     <div className="d-flex align-items-center justify-content-between flex-grow-1 mb-4">
       <h6>All Tasks</h6>

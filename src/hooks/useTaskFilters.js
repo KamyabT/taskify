@@ -3,14 +3,11 @@ import { useReducer } from "react";
 import { filtersReducer, initialState } from "../reducers/filtersReducer";
 
 export function useTaskFilters(tasks) {
-  console.log(tasks, "tasks in useTaskFilters");
-
   const [filters, dispatch] = useReducer(filtersReducer, initialState);
 
   let filteredTasks = [...tasks];
 
   filteredTasks = filteredTasks.filter((task) => {
-    console.log(filters.search, "filters.search in useTaskFilters");
     return (
       task.title.toLowerCase().includes(filters.search.toLowerCase()) ||
       task.description.toLowerCase().includes(filters.search.toLowerCase()) ||
@@ -34,10 +31,10 @@ export function useTaskFilters(tasks) {
 
   if (filters.sortBy === "status") {
     const statusOrder = {
-    "Overdue": 1,
+      Overdue: 1,
       "To Do": 2,
       "In-Progress": 3,
-      "Completed": 4,
+      Completed: 4,
     };
 
     filteredTasks.sort((a, b) => statusOrder[a.status] - statusOrder[b.status]);
@@ -52,8 +49,6 @@ export function useTaskFilters(tasks) {
 
     filteredTasks.sort((a, b) => priorityOrder[b.priority] - priorityOrder[a.priority]);
   }
-
-  console.log(filteredTasks, "filteredTasks in useTaskFilters");
 
   return {
     filters,

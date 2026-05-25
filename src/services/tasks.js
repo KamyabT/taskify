@@ -6,10 +6,9 @@ export async function getTasks() {
   return response.data.items;
 }
 
-
-
 export async function deleteTask(id) {
   const response = await api.delete(`/collections/tasks/records/${id}`);
 
+  console.log(response, " after delete");
   return response.data;
-} 
+}
