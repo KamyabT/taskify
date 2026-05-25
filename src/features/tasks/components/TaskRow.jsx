@@ -3,7 +3,7 @@ import taskStyles from "../../../utils/taskStyles";
 import style from "./TaskRow.module.css";
 import { SquarePen, Trash2 } from "lucide-react";
 
-const TaskRow = ({ task }) => {
+const TaskRow = ({ task, handleDelete }) => {
   return (
     <div className={`${style.row}`}>
       <div className="d-flex align-items-center">
@@ -38,7 +38,11 @@ const TaskRow = ({ task }) => {
           <SquarePen color="var(--text-secondary)" size={24} />
         </Button>
         <Button type="iconAction">
-          <Trash2 color="var(--text-secondary)" size={24} />
+          <Trash2
+            color="var(--text-secondary)"
+            size={24}
+            onClick={() => handleDelete(task)}
+          />
         </Button>
       </div>
     </div>

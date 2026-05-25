@@ -44,6 +44,19 @@ const Dashboard = () => {
     try {
       const data = await getTasks();
       setTasks(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  async function deleteTask(id) {
+    setIsLoading(true);
+    try {
+      const data = await deleteTask(id);
+      setTasks(data);
     } catch (error) {
       console.log(error);
     }
@@ -58,6 +71,11 @@ const Dashboard = () => {
     setIsModalOpen(false);
   }
 
+  function handleDelete(task) {
+    console.log(task.id);
+    deleteTask(task.id);
+  }
+
   return (
     <main className={style.dashboard}>
       <Sidebar />
@@ -67,7 +85,11 @@ const Dashboard = () => {
       >
         {isModalOpen && (
           <Modal>
-            <AddTaskForm isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} onSuccess={handleTaskCreated}/>
+            <AddTaskForm
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              onSuccess={handleTaskCreated}
+            />
           </Modal>
         )}
         <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
@@ -82,7 +104,7 @@ const Dashboard = () => {
           <PriorityChart />
         </div>
         <div>
-          <TasksTable tasks={tasks} isLoading={isLoading} />
+          <TasksTable tasks={tasks} isLoading={isLoading} handleDelete={handleDelete} />
         </div>
       </section>
     </main>
