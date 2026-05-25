@@ -3,6 +3,8 @@ import taskStyles from "../../../utils/taskStyles";
 import style from "./TaskRow.module.css";
 import { SquarePen, Trash2 } from "lucide-react";
 import { format, formatDistance } from "date-fns";
+// import { format, formatDistance } from "date-fns-jalali";
+// import { faIR } from "date-fns-jalali/locale";
 
 const TaskRow = ({ task, handleDelete }) => {
   return (
@@ -32,14 +34,20 @@ const TaskRow = ({ task, handleDelete }) => {
         </span>
       </div>
       <div className="">
-        <span className={`${style.date}`}>{format(task.dueDate, "MM/dd/yyyy")}</span>
+        <span className={`${style.date}`}>{format(task.dueDate, "dd/MM/yyyy")}</span>
       </div>
       <div className="">
-        <span className={`${style.date}`}>{format(task.dueDate, "MM/dd/yyyy")}</span>
+        <span className={`${style.date}`}>{format(task.dueDate, "dd/MM/yyyy")}</span>
       </div>
       <div className="">
-        <span className={`${style.date}`}>
-          {formatDistance(task.dueDate, new Date(), { addSuffix: true })}
+        <span
+          className={`${style.date}`}
+          style={{ direction: "rtl", textAlign: "right" }}
+        >
+          {"\u202B" +
+            formatDistance(new Date(task.dueDate), new Date(), {
+              addSuffix: true,
+            })}
         </span>
       </div>
       <div className="">
