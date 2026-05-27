@@ -4,11 +4,20 @@ import taskStyles from "../../../utils/taskStyles";
 import style from "./TaskRow.module.css";
 import { SquarePen, Trash2, CircleCheck } from "lucide-react";
 import { format, formatDistance } from "date-fns";
+import { updateTask } from "../../../services/tasks";
 // import { format, formatDistance } from "date-fns-jalali";
 // import { faIR } from "date-fns-jalali/locale";
 
 const TaskRow = ({ task, handleDelete }) => {
   const [isEditing, setIsEditing] = useState(false);
+  const [newStatus, setNewStatus] = useState(task.status);
+
+  function handleUpdateStatus() {
+    console.log("update status");
+    updateTask(task.id, { status: newStatus });
+    setIsEditing(!isEditing);
+  }
+
   return (
     <div className={`${style.row}`}>
       <div className="d-flex align-items-center">
@@ -33,14 +42,23 @@ const TaskRow = ({ task, handleDelete }) => {
       <div className="">
         {isEditing ? (
           <div className="d-flex align-items-center">
-            <select className={`${style.select}`}>
+            <select
+              className={`${style.select}`}
+              value={newStatus}
+              onChange={(e) => setNewStatus(e.target.value)}
+            >
               <option value="To Do">To Do</option>
               <option value="In-Progress">In-Progress</option>
               <option value="Completed">Completed</option>
               <option value="Overdue">Overdue</option>
             </select>
             <span className="d-flex align-items-center ms-1">
-              <CircleCheck size={22} color="var(--success)" />
+              <CircleCheck
+                size={22}
+                className={`${style.cursorPointer}`}
+                color="var(--success)"
+                onClick={handleUpdateStatus}
+              />
             </span>
             {/* <span className="d-flex align-items-center ms-1">
               <CircleCheck size={22} color="var(--success)" />
@@ -48,10 +66,10 @@ const TaskRow = ({ task, handleDelete }) => {
           </div>
         ) : (
           <span
-            className={`${style.badge} ${style[taskStyles.status[task.status]]} ${style.cursorPointer}`}
+            className={`${style.badge} ${style[taskStyles.status[newStatus]]} ${style.cursorPointer}`}
             onClick={() => setIsEditing(!isEditing)}
           >
-            {task.status}
+            {newStatus}
           </span>
         )}
       </div>

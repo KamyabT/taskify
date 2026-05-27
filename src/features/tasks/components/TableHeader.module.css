@@ -8,14 +8,14 @@
 .row {
   display: grid;
   grid-template-columns:
-    50px
+    40px
     2.5fr
-    1.5fr
-    1fr
-    1fr
-    1fr
-    1fr
-    1fr
+    1.25fr
+    1.25fr
+    1.25fr
+    0.75fr
+    0.75fr
+    0.75fr
     120px;
 
   align-items: center;
