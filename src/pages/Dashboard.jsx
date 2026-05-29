@@ -46,7 +46,8 @@ const Dashboard = () => {
       setTasks(data);
       setIsLoading(false);
     } catch (error) {
-      console.log(error);
+      // throw Error("error");
+      console.log(error.status);
     } finally {
       setIsLoading(false);
     }
@@ -56,7 +57,7 @@ const Dashboard = () => {
     setIsLoading(true);
     try {
       await deleteTask(id);
-      await fetchTasks()
+      await fetchTasks();
     } catch (error) {
       console.log(error);
     }

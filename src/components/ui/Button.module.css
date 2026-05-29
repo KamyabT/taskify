@@ -4,6 +4,14 @@
   padding: 6px 12px;
 }
 
+.disableStyle {
+  background-color: var(--secondary-bg);
+  border: 1px solid var(--border-main);
+  color: var(--primary-white);
+  font-weight: 500;
+  font-size: 12px;
+}
+
 /*******************Warning Button*******************/
 
 .dangerBtn {
@@ -25,15 +33,12 @@
 .iconActionBtn {
   background-color: transparent;
   border: none;
-  margin: 0 8px 0 0;
 }
 
 .iconActionBtn:hover {
   background-color: transparent;
   transform: scale(1.1);
-  margin: 0 8px 0 0;
 }
-
 
 /*********************************Buttons*****************************/
 
@@ -67,7 +72,15 @@
   color: var(--danger-hover);
 }
 
+/************Success************/
 
+.successBtn {
+  background-color: var(--success);
+  border: 1px solid var(--border-main);
+  color: var(--primary-white);
+  font-weight: 500;
+  font-size: 12px;
+}
 
 /************Action Transparent Button************/
 

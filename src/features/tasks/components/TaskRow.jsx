@@ -18,6 +18,15 @@ const TaskRow = ({ task, handleDelete }) => {
     setIsEditing(!isEditing);
   }
 
+  async function handleComplete() {
+    console.log("complete clicked");
+    const res = await updateTask(task.id, { status: "Completed" });
+    console.log(res)
+    setNewStatus(res.status);
+  }
+
+  let isCompleted = newStatus === "Completed";
+
   return (
     <div className={`${style.row}`}>
       <div className="d-flex align-items-center">
@@ -60,9 +69,6 @@ const TaskRow = ({ task, handleDelete }) => {
                 onClick={handleUpdateStatus}
               />
             </span>
-            {/* <span className="d-flex align-items-center ms-1">
-              <CircleCheck size={22} color="var(--success)" />
-            </span> */}
           </div>
         ) : (
           <span
@@ -87,6 +93,9 @@ const TaskRow = ({ task, handleDelete }) => {
         </span>
       </div>
       <div className="">
+        <Button type="success" disable={isCompleted} onClick={handleComplete}>
+          Complete
+        </Button>
         <Button type="iconAction">
           <SquarePen color="var(--text-secondary)" size={24} />
         </Button>
