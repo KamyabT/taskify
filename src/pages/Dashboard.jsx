@@ -129,7 +129,7 @@ const Dashboard = () => {
         </div>
         <div className={`${style.charts} mt-4`}>
           <OverViewChart />
-          <PriorityChart />
+          <PriorityChart data={tasks}/>
         </div>
         <div>
           <TasksTable tasks={tasks} isLoading={isLoading} handleDelete={handleDelete} />

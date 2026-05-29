@@ -11,7 +11,6 @@ import {
 
 import style from "./OverViewChart.module.css";
 
-
 const data = [
   { name: "May 1", tasks: 4 },
   { name: "May 5", tasks: 8 },

@@ -1,23 +1,24 @@
 import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
-import tasks from "../../data/tasks";
 
 import style from "./PriorityChart.module.css";
 
-const PriorityChart = () => {
+const PriorityChart = ({ data }) => {
+  console.log("priority ", data);
+
   const groupedData = [
     {
       priority: "High",
-      value: tasks.filter((task) => task.priority === "High").length,
+      value: data.filter((task) => task.priority === "High").length,
       color: "var(--danger)",
     },
     {
       priority: "Medium",
-      value: tasks.filter((task) => task.priority === "Medium").length,
+      value: data.filter((task) => task.priority === "Medium").length,
       color: "var(--warning)",
     },
     {
       priority: "Low",
-      value: tasks.filter((task) => task.priority === "Low").length,
+      value: data.filter((task) => task.priority === "Low").length,
       color: "var(--success)",
     },
   ];
@@ -26,7 +27,7 @@ const PriorityChart = () => {
 
   return (
     <div className={style.chartCard}>
-      <h5>Tasks Overview</h5>
+      <h5>Recent Tasks Overview</h5>
 
       <div className={style.chartContent}>
         <div className={style.chartWrapper}>
