@@ -14,6 +14,27 @@
   outline: none;
 }
 
+input:focus {
+  border-color: var(--primary) !important;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+textarea:focus {
+  border-color: var(--primary) !important;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
+select:focus {
+  border-color: var(--primary) !important;
+  outline: none;
+  border-radius: 8px;
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.1);
+}
+
 .sectionTypo {
   color: var(--text-primary-light);
   font-weight: 500;

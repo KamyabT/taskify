@@ -1,7 +1,7 @@
 import TableHeader from "./TableHeader";
 import TaskRow from "./TaskRow";
 
-const TableBody = ({ tasks, handleDelete, isLoading }) => {
+const TableBody = ({ tasks, handleDelete, isLoading , setIsDeleteModalOpen }) => {
   return (
     <>
       <TableHeader />

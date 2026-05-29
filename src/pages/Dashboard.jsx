@@ -10,6 +10,8 @@ import PriorityChart from "../features/dashboard/PriorityChart";
 import Modal from "../components/ui/Modal/Modal";
 import AddTaskForm from "../features/tasks/components/AddTaskForm";
 import { getTasks, deleteTask } from "../services/tasks";
+import toast from "react-hot-toast";
+import Confirmation from "../components/ui/Confirmation/Confirmation";
 
 const stats = [
   {
@@ -38,15 +40,16 @@ const Dashboard = () => {
   const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [taskToDelete, setTaskToDelete] = useState(null);
 
   async function fetchTasks() {
     setIsLoading(true);
     try {
       const data = await getTasks();
       setTasks(data);
-      setIsLoading(false);
+      toast.success("Tasks fetched successfully!");
     } catch (error) {
-      // throw Error("error");
+      toast.error("Failed to get tasks, Please try again.");
       console.log(error.status);
     } finally {
       setIsLoading(false);
@@ -58,8 +61,12 @@ const Dashboard = () => {
     try {
       await deleteTask(id);
       await fetchTasks();
+      toast.success("Task deleted successfully!");
     } catch (error) {
+      toast.error("Failed to delete tasks, Please try again.");
       console.log(error);
+    } finally {
+      setIsLoading(false);
     }
   }
 
@@ -67,14 +74,22 @@ const Dashboard = () => {
     fetchTasks();
   }, []);
 
-  function handleTaskCreated() {
-    fetchTasks();
+  async function handleTaskCreated() {
+    await fetchTasks();
     setIsModalOpen(false);
   }
 
   function handleDelete(task) {
-    console.log(task.id);
-    taskRemoval(task.id);
+    setTaskToDelete(task);
+  }
+
+  async function handleConfirmDelete() {
+    await taskRemoval(taskToDelete.id);
+    setTaskToDelete(null);
+  }
+
+  function handleCancelDelete() {
+    setTaskToDelete(null);
   }
 
   return (
@@ -91,6 +106,18 @@ const Dashboard = () => {
               setIsModalOpen={setIsModalOpen}
               onSuccess={handleTaskCreated}
             />
+          </Modal>
+        )}
+        {taskToDelete && (
+          <Modal>
+            <Confirmation
+              approve="Yes"
+              reject="No"
+              onApprove={handleConfirmDelete}
+              onReject={handleCancelDelete}
+            >
+              Are you sure you want to delete this task?
+            </Confirmation>
           </Modal>
         )}
         <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />

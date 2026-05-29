@@ -139,6 +139,7 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen, onSuccess }) => {
             placeholder="Select your due date"
             value={newTask.dueDate}
             onChange={(e) => dispatch({ type: "SET_DUE_DATE", payload: e.target.value })}
+            required
           />
         </div>
       </div>

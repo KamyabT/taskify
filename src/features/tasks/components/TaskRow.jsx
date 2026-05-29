@@ -25,7 +25,7 @@ const TaskRow = ({ task, handleDelete }) => {
     setNewStatus(res.status);
   }
 
-  let isCompleted = newStatus === "Completed";
+  const isCompleted = newStatus === "Completed";
 
   return (
     <div className={`${style.row}`}>

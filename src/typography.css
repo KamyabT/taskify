@@ -18,6 +18,22 @@
   font-weight: 600;
 }
 
+.text-confirmation-small {
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.text-confirmation-medium {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+
+.text-confirmation-large {
+  font-size: 20px;
+  font-weight: 600;
+}
+
 .text-card-value-medium {
   font-size: 18px;
   font-weight: 600;
@@ -36,6 +52,16 @@
 
 .text-small {
   font-size: 12px;
+  color: var(--text-secondary);
+}
+
+.text-medium {
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.text-large {
+  font-size: 16px;
   color: var(--text-secondary);
 }
 
