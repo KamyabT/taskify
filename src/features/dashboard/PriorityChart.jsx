@@ -29,7 +29,10 @@ const PriorityChart = ({ data }) => {
     <div className={style.chartCard}>
       <h5>Recent Tasks Overview</h5>
 
-      <div className={style.chartContent}>
+      {data.length <=0 ? <div className={style.noData}>
+        <p className="text-center text-card-value-medium">No tasks yet.</p>
+        <p className="text-center text-card-value-medium">Create your first task to see activity and progress here.</p>
+      </div> : <div className={style.chartContent}>
         <div className={style.chartWrapper}>
           <ResponsiveContainer width="100%" height={220}>
             <PieChart>
@@ -62,7 +65,7 @@ const PriorityChart = ({ data }) => {
             </div>
           ))}
         </div>
-      </div>
+      </div>}
     </div>
   );
 };
