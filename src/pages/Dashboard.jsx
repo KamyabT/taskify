@@ -41,6 +41,7 @@ const Dashboard = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
+  const [isEditing, setIsEditing] = useState(false);
 
   async function fetchTasks() {
     setIsLoading(true);
@@ -120,6 +121,15 @@ const Dashboard = () => {
             </Confirmation>
           </Modal>
         )}
+        {isEditing && (
+          <Modal>
+            <AddTaskForm
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              onSuccess={handleTaskCreated}
+            />
+          </Modal>
+        )}
         <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
         <div className={`${style.statsRow} mt-4`}>
           {stats.map(({ title, value, change }) => {
@@ -132,7 +142,13 @@ const Dashboard = () => {
           <PriorityChart data={tasks} />
         </div>
         <div>
-          <TasksTable tasks={tasks} isLoading={isLoading} handleDelete={handleDelete} />
+          <TasksTable
+            tasks={tasks}
+            isLoading={isLoading}
+            handleDelete={handleDelete}
+            isEditing={isEditing}
+            setIsEditing={setIsEditing}
+          />
         </div>
       </section>
     </main>

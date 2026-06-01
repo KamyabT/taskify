@@ -12,13 +12,13 @@ import {
 import style from "./OverViewChart.module.css";
 
 const data = [
-  // { name: "May 1", tasks: 4 },
-  // { name: "May 5", tasks: 8 },
-  // { name: "May 10", tasks: 13 },
-  // { name: "May 15", tasks: 11 },
-  // { name: "May 20", tasks: 19 },
-  // { name: "May 25", tasks: 10 },
-  // { name: "May 30", tasks: 15 },
+  { name: "May 1", tasks: 4 },
+  { name: "May 5", tasks: 8 },
+  { name: "May 10", tasks: 13 },
+  { name: "May 15", tasks: 11 },
+  { name: "May 20", tasks: 19 },
+  { name: "May 25", tasks: 10 },
+  { name: "May 30", tasks: 15 },
 ];
 
 const OverViewChart = () => {

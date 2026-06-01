@@ -24,7 +24,7 @@ const AddTaskForm = ({ isModalOpen, setIsModalOpen, onSuccess }) => {
             Create a new task to track and manage your work
           </p>
         </div>
-        <div style={{ cursor: "pointer" }} onClick={() => setIsModalOpen(!isModalOpen)}>
+        <div style={{ cursor: "pointer" }} onClick={() => setIsModalOpen(false)}>
           <CircleX />
         </div>
       </div>

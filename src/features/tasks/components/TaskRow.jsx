@@ -8,20 +8,20 @@ import { updateTask } from "../../../services/tasks";
 // import { format, formatDistance } from "date-fns-jalali";
 // import { faIR } from "date-fns-jalali/locale";
 
-const TaskRow = ({ task, handleDelete }) => {
-  const [isEditing, setIsEditing] = useState(false);
+const TaskRow = ({ task, handleDelete , isEditing , setIsEditing }) => {
+  const [isEditingStatus, setIsEditingStatus] = useState(false);
   const [newStatus, setNewStatus] = useState(task.status);
 
   function handleUpdateStatus() {
     console.log("update status");
     updateTask(task.id, { status: newStatus });
-    setIsEditing(!isEditing);
+    setIsEditingStatus(!isEditingStatus);
   }
 
   async function handleComplete() {
     console.log("complete clicked");
     const res = await updateTask(task.id, { status: "Completed" });
-    console.log(res)
+    console.log(res);
     setNewStatus(res.status);
   }
 
@@ -49,7 +49,7 @@ const TaskRow = ({ task, handleDelete }) => {
         </span>
       </div>
       <div className="">
-        {isEditing ? (
+        {isEditingStatus ? (
           <div className="d-flex align-items-center">
             <select
               className={`${style.select}`}
@@ -73,7 +73,7 @@ const TaskRow = ({ task, handleDelete }) => {
         ) : (
           <span
             className={`${style.badge} ${style[taskStyles.status[newStatus]]} ${style.cursorPointer}`}
-            onClick={() => setIsEditing(!isEditing)}
+            onClick={() => setIsEditingStatus(!isEditingStatus)}
           >
             {newStatus}
           </span>
@@ -97,7 +97,7 @@ const TaskRow = ({ task, handleDelete }) => {
           Complete
         </Button>
         <Button type="iconAction">
-          <SquarePen color="var(--text-secondary)" size={24} />
+          <SquarePen color="var(--text-secondary)" size={24} onClick={()=> setIsEditing(!isEditing)}/>
         </Button>
         <Button type="iconAction">
           <Trash2

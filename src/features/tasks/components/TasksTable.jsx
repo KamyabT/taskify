@@ -3,7 +3,7 @@ import TableBody from "./TableBody";
 import { useTaskFilters } from "../../../hooks/useTaskFilters";
 import style from "./TasksTable.module.css";
 
-const TasksTable = ({ tasks, handleDelete, isLoading }) => {
+const TasksTable = ({ tasks, handleDelete, isLoading , isEditing , setIsEditing}) => {
   const { filters, dispatch, filteredTasks } = useTaskFilters(tasks);
 
   return (
@@ -18,6 +18,8 @@ const TasksTable = ({ tasks, handleDelete, isLoading }) => {
           tasks={filteredTasks}
           handleDelete={handleDelete}
           isLoading={isLoading}
+          isEditing={isEditing}
+          setIsEditing={setIsEditing}
         />
       )}
     </section>
