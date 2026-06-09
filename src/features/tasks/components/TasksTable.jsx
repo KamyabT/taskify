@@ -1,9 +1,11 @@
 import TableFilters from "./TableFilters";
 import TableBody from "./TableBody";
 import { useTaskFilters } from "../../../hooks/useTaskFilters";
+import { useTasks } from "../../../context/TasksContext";
 import style from "./TasksTable.module.css";
 
-const TasksTable = ({ tasks, handleDelete, isLoading , isEditing , setIsEditing}) => {
+const TasksTable = () => {
+  const { tasks, handleDelete, isLoading, isEditing, setIsEditing } = useTasks();
   const { filters, dispatch, filteredTasks } = useTaskFilters(tasks);
 
   return (
