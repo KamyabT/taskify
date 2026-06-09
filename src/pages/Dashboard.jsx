@@ -12,6 +12,7 @@ import AddTaskForm from "../features/tasks/components/AddTaskForm";
 import { getTasks, deleteTask } from "../services/tasks";
 import toast from "react-hot-toast";
 import Confirmation from "../components/ui/Confirmation/Confirmation";
+import { useTasks } from "../context/TasksContext";
 
 const stats = [
   {
@@ -37,61 +38,74 @@ const stats = [
 ];
 
 const Dashboard = () => {
-  const [tasks, setTasks] = useState([]);
+  // const [tasks, setTasks] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [taskToDelete, setTaskToDelete] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
+  // const [taskToDelete, setTaskToDelete] = useState(null);
+  // const [isEditing, setIsEditing] = useState(false);
 
-  async function fetchTasks() {
-    setIsLoading(true);
-    try {
-      const data = await getTasks();
-      setTasks(data);
-      toast.success("Tasks fetched successfully!");
-    } catch (error) {
-      toast.error("Failed to get tasks, Please try again.");
-      console.log(error.status);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  // async function fetchTasks() {
+  //   setIsLoading(true);
+  //   try {
+  //     const data = await getTasks();
+  //     setTasks(data);
+  //     toast.success("Tasks fetched successfully!");
+  //   } catch (error) {
+  //     toast.error("Failed to get tasks, Please try again.");
+  //     console.log(error.status);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }
 
-  async function taskRemoval(id) {
-    setIsLoading(true);
-    try {
-      await deleteTask(id);
-      await fetchTasks();
-      toast.success("Task deleted successfully!");
-    } catch (error) {
-      toast.error("Failed to delete tasks, Please try again.");
-      console.log(error);
-    } finally {
-      setIsLoading(false);
-    }
-  }
+  // async function taskRemoval(id) {
+  //   setIsLoading(true);
+  //   try {
+  //     await deleteTask(id);
+  //     await fetchTasks();
+  //     toast.success("Task deleted successfully!");
+  //   } catch (error) {
+  //     toast.error("Failed to delete tasks, Please try again.");
+  //     console.log(error);
+  //   } finally {
+  //     setIsLoading(false);
+  //   }
+  // }
 
-  useEffect(() => {
-    fetchTasks();
-  }, []);
+  // useEffect(() => {
+  //   fetchTasks();
+  // }, []);
 
-  async function handleTaskCreated() {
-    await fetchTasks();
-    setIsModalOpen(false);
-  }
+  // async function handleTaskCreated() {
+  //   await fetchTasks();
+  //   setIsModalOpen(false);
+  // }
 
-  function handleDelete(task) {
-    setTaskToDelete(task);
-  }
+  // function handleDelete(task) {
+  //   setTaskToDelete(task);
+  // }
 
-  async function handleConfirmDelete() {
-    await taskRemoval(taskToDelete.id);
-    setTaskToDelete(null);
-  }
+  // async function handleConfirmDelete() {
+  //   await taskRemoval(taskToDelete.id);
+  //   setTaskToDelete(null);
+  // }
 
-  function handleCancelDelete() {
-    setTaskToDelete(null);
-  }
+  // function handleCancelDelete() {
+  //   setTaskToDelete(null);
+  // }
+
+  const {
+    setIsModalOpen,
+    handleTaskCreated,
+    taskToDelete,
+    handleConfirmDelete,
+    handleCancelDelete,
+    isEditing,
+    tasks,
+    isLoading,
+    handleDelete,
+    setIsEditing,
+  } = useTasks();
 
   return (
     <main className={style.dashboard}>
