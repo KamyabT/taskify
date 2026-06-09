@@ -1,14 +1,10 @@
+import { useTasks } from "../../../context/TasksContext";
 import TableHeader from "./TableHeader";
 import TaskRow from "./TaskRow";
 
-const TableBody = ({
-  tasks,
-  handleDelete,
-  isLoading,
-  setIsDeleteModalOpen,
-  isEditing,
-  setIsEditing,
-}) => {
+const TableBody = ({ tasks }) => {
+  const { isLoading } = useTasks();
+
   return (
     <>
       <TableHeader />
@@ -17,15 +13,7 @@ const TableBody = ({
           Loading tasks please wait...
         </p>
       ) : (
-        tasks.map((task) => (
-          <TaskRow
-            key={task.id}
-            task={task}
-            handleDelete={handleDelete}
-            isEditing={isEditing}
-            setIsEditing={setIsEditing}
-          />
-        ))
+        tasks.map((task) => <TaskRow key={task.id} task={task} />)
       )}
     </>
   );

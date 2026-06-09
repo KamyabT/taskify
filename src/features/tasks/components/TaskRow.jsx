@@ -5,12 +5,14 @@ import style from "./TaskRow.module.css";
 import { SquarePen, Trash2, CircleCheck } from "lucide-react";
 import { format, formatDistance } from "date-fns";
 import { updateTask } from "../../../services/tasks";
+import { useTasks } from "../../../context/TasksContext";
 // import { format, formatDistance } from "date-fns-jalali";
 // import { faIR } from "date-fns-jalali/locale";
 
-const TaskRow = ({ task, handleDelete , isEditing , setIsEditing }) => {
+const TaskRow = ({ task }) => {
   const [isEditingStatus, setIsEditingStatus] = useState(false);
   const [newStatus, setNewStatus] = useState(task.status);
+  const { handleDelete, isEditing, setIsEditing } = useTasks();
 
   function handleUpdateStatus() {
     console.log("update status");
@@ -97,7 +99,11 @@ const TaskRow = ({ task, handleDelete , isEditing , setIsEditing }) => {
           Complete
         </Button>
         <Button type="iconAction">
-          <SquarePen color="var(--text-secondary)" size={24} onClick={()=> setIsEditing(!isEditing)}/>
+          <SquarePen
+            color="var(--text-secondary)"
+            size={24}
+            onClick={() => setIsEditing(!isEditing)}
+          />
         </Button>
         <Button type="iconAction">
           <Trash2

@@ -1,4 +1,3 @@
-import { useState, useEffect } from "react";
 import Header from "../components/layout/Header/Header";
 import Sidebar from "../components/layout/Sidebar/Sidebar";
 import CompletionChart from "../features/dashboard/CompletionChart";
@@ -9,8 +8,6 @@ import OverViewChart from "../features/dashboard/OverViewChart";
 import PriorityChart from "../features/dashboard/PriorityChart";
 import Modal from "../components/ui/Modal/Modal";
 import AddTaskForm from "../features/tasks/components/AddTaskForm";
-import { getTasks, deleteTask } from "../services/tasks";
-import toast from "react-hot-toast";
 import Confirmation from "../components/ui/Confirmation/Confirmation";
 import { useTasks } from "../context/TasksContext";
 
@@ -38,61 +35,6 @@ const stats = [
 ];
 
 const Dashboard = () => {
-  // const [tasks, setTasks] = useState([]);
-  // const [isModalOpen, setIsModalOpen] = useState(false);
-  // const [isLoading, setIsLoading] = useState(false);
-  // const [taskToDelete, setTaskToDelete] = useState(null);
-  // const [isEditing, setIsEditing] = useState(false);
-
-  // async function fetchTasks() {
-  //   setIsLoading(true);
-  //   try {
-  //     const data = await getTasks();
-  //     setTasks(data);
-  //     toast.success("Tasks fetched successfully!");
-  //   } catch (error) {
-  //     toast.error("Failed to get tasks, Please try again.");
-  //     console.log(error.status);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }
-
-  // async function taskRemoval(id) {
-  //   setIsLoading(true);
-  //   try {
-  //     await deleteTask(id);
-  //     await fetchTasks();
-  //     toast.success("Task deleted successfully!");
-  //   } catch (error) {
-  //     toast.error("Failed to delete tasks, Please try again.");
-  //     console.log(error);
-  //   } finally {
-  //     setIsLoading(false);
-  //   }
-  // }
-
-  // useEffect(() => {
-  //   fetchTasks();
-  // }, []);
-
-  // async function handleTaskCreated() {
-  //   await fetchTasks();
-  //   setIsModalOpen(false);
-  // }
-
-  // function handleDelete(task) {
-  //   setTaskToDelete(task);
-  // }
-
-  // async function handleConfirmDelete() {
-  //   await taskRemoval(taskToDelete.id);
-  //   setTaskToDelete(null);
-  // }
-
-  // function handleCancelDelete() {
-  //   setTaskToDelete(null);
-  // }
 
   const {
     taskToDelete,
@@ -104,7 +46,6 @@ const Dashboard = () => {
     isLoading,
     handleDelete,
     setIsEditing,
-    fetchTasks,
     isModalOpen,
     setIsModalOpen,
   } = useTasks();

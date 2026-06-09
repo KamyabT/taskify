@@ -5,7 +5,7 @@ import { useTasks } from "../../../context/TasksContext";
 import style from "./TasksTable.module.css";
 
 const TasksTable = () => {
-  const { tasks, handleDelete, isLoading, isEditing, setIsEditing } = useTasks();
+  const { tasks } = useTasks();
   const { filters, dispatch, filteredTasks } = useTaskFilters(tasks);
 
   return (
@@ -16,13 +16,7 @@ const TasksTable = () => {
           No tasks found. Create your first task
         </p>
       ) : (
-        <TableBody
-          tasks={filteredTasks}
-          handleDelete={handleDelete}
-          isLoading={isLoading}
-          isEditing={isEditing}
-          setIsEditing={setIsEditing}
-        />
+        <TableBody tasks={filteredTasks} />
       )}
     </section>
   );
