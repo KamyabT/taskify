@@ -94,15 +94,11 @@ const Dashboard = () => {
   //   setTaskToDelete(null);
   // }
 
-  async function handleTaskCreated() {
-    await fetchTasks();
-    setIsModalOpen(false);
-  }
-
   const {
     taskToDelete,
     handleConfirmDelete,
     handleCancelDelete,
+    handleTaskCreated,
     isEditing,
     tasks,
     isLoading,
@@ -110,7 +106,7 @@ const Dashboard = () => {
     setIsEditing,
     fetchTasks,
     isModalOpen,
-    setIsModalOpen
+    setIsModalOpen,
   } = useTasks();
 
   return (
@@ -150,7 +146,7 @@ const Dashboard = () => {
             />
           </Modal>
         )}
-        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={"Dashboard"}/>
         <div className={`${style.statsRow} mt-4`}>
           {stats.map(({ title, value, change }) => {
             return <StatsCards key={title} title={title} value={value} change={change} />;

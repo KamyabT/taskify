@@ -1,11 +1,15 @@
 import Sidebar from "../components/layout/Sidebar/Sidebar";
 import Header from "../components/layout/Header/Header";
+import Modal from "../components/ui/Modal/Modal";
+import AddTaskForm from "../features/tasks/components/AddTaskForm";
 import { useTasks } from "../context/TasksContext";
 
 const Projects = () => {
-
-  const {isModalOpen , setIsModalOpen} = useTasks()
-
+  const {
+    handleTaskCreated,
+    isModalOpen,
+    setIsModalOpen,
+  } = useTasks();
 
   return (
     <main>
@@ -14,7 +18,16 @@ const Projects = () => {
         className="d-flex flex-column px-4 py-3"
         style={{ width: "calc(100% - 250px)", left: "250px", position: "relative" }}
       >
-        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} />
+        {isModalOpen && (
+          <Modal>
+            <AddTaskForm
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              onSuccess={handleTaskCreated}
+            />
+          </Modal>
+        )}
+        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={"Projects"}/>
       </section>
     </main>
   );

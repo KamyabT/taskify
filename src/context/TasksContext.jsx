@@ -54,12 +54,19 @@ export function TasksProvider({ children }) {
     setTaskToDelete(null);
   }
 
+  
+  async function handleTaskCreated() {
+    await fetchTasks();
+    setIsModalOpen(false);
+  }
+
   return (
     <TasksContext.Provider
       value={{
         taskToDelete,
         handleConfirmDelete,
         handleCancelDelete,
+        handleTaskCreated,
         isEditing,
         tasks,
         isLoading,

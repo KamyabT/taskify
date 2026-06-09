@@ -1,15 +1,34 @@
 import Sidebar from "../components/layout/Sidebar/Sidebar";
+import Header from "../components/layout/Header/Header";
+import Modal from "../components/ui/Modal/Modal";
+import AddTaskForm from "../features/tasks/components/AddTaskForm";
+import { useTasks } from "../context/TasksContext";
 
 const Priorities = () => {
-    return (
-    <>
+  const { handleTaskCreated, isModalOpen, setIsModalOpen } = useTasks();
+  return (
+    <main>
       <Sidebar />
       <section
-        style={{ width: "calc(100% - 300px)", left: "300px", position: "relative" }}
+        className="d-flex flex-column px-4 py-3"
+        style={{ width: "calc(100% - 250px)", left: "250px", position: "relative" }}
       >
-        <h3>Coming soon</h3>
+        {isModalOpen && (
+          <Modal>
+            <AddTaskForm
+              isModalOpen={isModalOpen}
+              setIsModalOpen={setIsModalOpen}
+              onSuccess={handleTaskCreated}
+            />
+          </Modal>
+        )}
+        <Header
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          title={"Priorities"}
+        />
       </section>
-    </>
+    </main>
   );
 };
 

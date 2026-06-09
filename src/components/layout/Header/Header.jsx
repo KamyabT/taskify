@@ -3,10 +3,10 @@ import style from "./Header.module.css";
 import Actions from "./Actions";
 import SearchInput from "../../ui/SearchInput";
 
-const Header = ({ isModalOpen, setIsModalOpen }) => {
+const Header = ({ isModalOpen, setIsModalOpen , title }) => {
   return (
     <header className={style.header}>
-      <Title />
+      <Title title={title}/>
       <div className={style.searchWrapper}>
         <SearchInput />
       </div>
