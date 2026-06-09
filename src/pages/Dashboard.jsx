@@ -94,8 +94,12 @@ const Dashboard = () => {
   //   setTaskToDelete(null);
   // }
 
+  async function handleTaskCreated() {
+    await fetchTasks();
+    setIsModalOpen(false);
+  }
+
   const {
-    handleTaskCreated,
     taskToDelete,
     handleConfirmDelete,
     handleCancelDelete,
@@ -104,6 +108,7 @@ const Dashboard = () => {
     isLoading,
     handleDelete,
     setIsEditing,
+    fetchTasks
   } = useTasks();
 
   return (

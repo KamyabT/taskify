@@ -41,11 +41,6 @@ export function TasksProvider({ children }) {
     fetchTasks(); // 👈 وقتی اپ لود میشه خودکار فچ میکنه
   }, []);
 
-  async function handleTaskCreated() {
-    await fetchTasks();
-    setIsModalOpen(false);
-  }
-
   function handleDelete(task) {
     setTaskToDelete(task);
   }
@@ -62,7 +57,7 @@ export function TasksProvider({ children }) {
   return (
     <TasksContext.Provider
       value={{
-        handleTaskCreated,
+        fetchTasks,
         taskToDelete,
         handleConfirmDelete,
         handleCancelDelete,
