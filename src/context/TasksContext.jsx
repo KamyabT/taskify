@@ -60,7 +60,19 @@ export function TasksProvider({ children }) {
   }
 
   return (
-    <TasksContext.Provider value={{ tasks, isLoading, fetchTasks, handleDelete , handleCancelDelete , handleConfirmDelete , handleTaskCreated}}>
+    <TasksContext.Provider
+      value={{
+        handleTaskCreated,
+        taskToDelete,
+        handleConfirmDelete,
+        handleCancelDelete,
+        isEditing,
+        tasks,
+        isLoading,
+        handleDelete,
+        setIsEditing,
+      }}
+    >
       {children}
     </TasksContext.Provider>
   );

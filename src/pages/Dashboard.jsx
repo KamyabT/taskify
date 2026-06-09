@@ -95,7 +95,6 @@ const Dashboard = () => {
   // }
 
   const {
-    setIsModalOpen,
     handleTaskCreated,
     taskToDelete,
     handleConfirmDelete,
@@ -112,7 +111,7 @@ const Dashboard = () => {
       <Sidebar />
       <section
         className="d-flex flex-column px-4 py-3"
-        style={{ width: "calc(100% - 300px)", left: "300px", position: "relative" }}
+        style={{ width: "calc(100% - 250px)", left: "250px", position: "relative" }}
       >
         {isModalOpen && (
           <Modal>
