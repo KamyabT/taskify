@@ -57,7 +57,6 @@ export function TasksProvider({ children }) {
   return (
     <TasksContext.Provider
       value={{
-        fetchTasks,
         taskToDelete,
         handleConfirmDelete,
         handleCancelDelete,
@@ -66,6 +65,9 @@ export function TasksProvider({ children }) {
         isLoading,
         handleDelete,
         setIsEditing,
+        fetchTasks,
+        isModalOpen,
+        setIsModalOpen,
       }}
     >
       {children}

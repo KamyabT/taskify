@@ -39,7 +39,7 @@ const stats = [
 
 const Dashboard = () => {
   // const [tasks, setTasks] = useState([]);
-  const [isModalOpen, setIsModalOpen] = useState(false);
+  // const [isModalOpen, setIsModalOpen] = useState(false);
   // const [isLoading, setIsLoading] = useState(false);
   // const [taskToDelete, setTaskToDelete] = useState(null);
   // const [isEditing, setIsEditing] = useState(false);
@@ -108,7 +108,9 @@ const Dashboard = () => {
     isLoading,
     handleDelete,
     setIsEditing,
-    fetchTasks
+    fetchTasks,
+    isModalOpen,
+    setIsModalOpen
   } = useTasks();
 
   return (
