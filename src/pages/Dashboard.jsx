@@ -40,7 +40,6 @@ const Dashboard = () => {
         className="d-flex flex-column px-4 py-3"
         style={{ width: "calc(100% - 250px)", left: "250px", position: "relative" }}
       >
-        {/* create modal */}
         {isModalOpen && (
           <Modal>
             <AddTaskForm
@@ -49,8 +48,6 @@ const Dashboard = () => {
             />
           </Modal>
         )}
-
-        {/* delete confirmation modal */}
         {taskToDelete && (
           <Modal>
             <Confirmation
@@ -63,8 +60,6 @@ const Dashboard = () => {
             </Confirmation>
           </Modal>
         )}
-
-        {/* edit modal */}
         {taskToEdit && (
           <Modal>
             <AddTaskForm
