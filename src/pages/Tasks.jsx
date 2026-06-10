@@ -2,7 +2,9 @@ import Sidebar from "../components/layout/Sidebar/Sidebar";
 import Header from "../components/layout/Header/Header";
 import Modal from "../components/ui/Modal/Modal";
 import AddTaskForm from "../features/tasks/components/AddTaskForm";
+import TasksTable from "../features/tasks/components/TasksTable";
 import { useTasks } from "../context/TasksContext";
+// import TasksPageTable from "../features/tasks/TasksPageTable";
 
 const Tasks = () => {
   const { handleTaskCreated, isModalOpen, setIsModalOpen } = useTasks();
@@ -27,6 +29,10 @@ const Tasks = () => {
           setIsModalOpen={setIsModalOpen}
           title={"Tasks"}
         />
+        <div>
+          <TasksTable />
+          {/* <TasksPageTable /> */}
+        </div>
       </section>
     </main>
   );
