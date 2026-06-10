@@ -9,14 +9,15 @@ export function TasksProvider({ children }) {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [taskToDelete, setTaskToDelete] = useState(null);
-  const [isEditing, setIsEditing] = useState(false);
+  const [taskToEdit, setTaskToEdit] = useState(null);
 
   async function fetchTasks() {
     setIsLoading(true);
     try {
       const data = await getTasks();
-      setTasks(data); // 👈 حالا tasks پر شد
+      setTasks(data);
     } catch (error) {
+      toast.error("Failed to get tasks. Please try again.");
       console.log(error);
     } finally {
       setIsLoading(false);
@@ -30,7 +31,7 @@ export function TasksProvider({ children }) {
       await fetchTasks();
       toast.success("Task deleted successfully!");
     } catch (error) {
-      toast.error("Failed to delete tasks, Please try again.");
+      toast.error("Failed to delete task. Please try again.");
       console.log(error);
     } finally {
       setIsLoading(false);
@@ -38,7 +39,7 @@ export function TasksProvider({ children }) {
   }
 
   useEffect(() => {
-    fetchTasks(); // 👈 وقتی اپ لود میشه خودکار فچ میکنه
+    fetchTasks();
   }, []);
 
   function handleDelete(task) {
@@ -54,27 +55,38 @@ export function TasksProvider({ children }) {
     setTaskToDelete(null);
   }
 
-  
   async function handleTaskCreated() {
     await fetchTasks();
     setIsModalOpen(false);
   }
 
+  function handleEditTask(task) {
+    setTaskToEdit(task);
+  }
+
+  async function handleTaskEdited() {
+    await fetchTasks();
+    setTaskToEdit(null);
+    toast.success("Task updated successfully!");
+  }
+
   return (
     <TasksContext.Provider
       value={{
+        tasks,
+        isLoading,
+        isModalOpen,
+        setIsModalOpen,
         taskToDelete,
+        taskToEdit,
+        setTaskToEdit,
+        handleDelete,
         handleConfirmDelete,
         handleCancelDelete,
         handleTaskCreated,
-        isEditing,
-        tasks,
-        isLoading,
-        handleDelete,
-        setIsEditing,
+        handleEditTask,
+        handleTaskEdited,
         fetchTasks,
-        isModalOpen,
-        setIsModalOpen,
       }}
     >
       {children}

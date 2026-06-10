@@ -12,42 +12,25 @@ import Confirmation from "../components/ui/Confirmation/Confirmation";
 import { useTasks } from "../context/TasksContext";
 
 const stats = [
-  {
-    title: "total",
-    value: 24,
-    change: 12,
-  },
-  {
-    title: "progress",
-    value: 8,
-    change: 5,
-  },
-  {
-    title: "completed",
-    value: 12,
-    change: 18,
-  },
-  {
-    title: "overdue",
-    value: 4,
-    change: 8,
-  },
+  { title: "total", value: 24, change: 12 },
+  { title: "progress", value: 8, change: 5 },
+  { title: "completed", value: 12, change: 18 },
+  { title: "overdue", value: 4, change: 8 },
 ];
 
 const Dashboard = () => {
-
   const {
+    tasks,
+    isModalOpen,
+    setIsModalOpen,
     taskToDelete,
+    taskToEdit,
     handleConfirmDelete,
     handleCancelDelete,
     handleTaskCreated,
-    isEditing,
-    tasks,
-    isLoading,
+    handleTaskEdited,
     handleDelete,
-    setIsEditing,
-    isModalOpen,
-    setIsModalOpen,
+    setTaskToEdit,
   } = useTasks();
 
   return (
@@ -57,15 +40,17 @@ const Dashboard = () => {
         className="d-flex flex-column px-4 py-3"
         style={{ width: "calc(100% - 250px)", left: "250px", position: "relative" }}
       >
+        {/* create modal */}
         {isModalOpen && (
           <Modal>
             <AddTaskForm
-              isModalOpen={isModalOpen}
-              setIsModalOpen={setIsModalOpen}
               onSuccess={handleTaskCreated}
+              onClose={() => setIsModalOpen(false)}
             />
           </Modal>
         )}
+
+        {/* delete confirmation modal */}
         {taskToDelete && (
           <Modal>
             <Confirmation
@@ -78,20 +63,27 @@ const Dashboard = () => {
             </Confirmation>
           </Modal>
         )}
-        {isEditing && (
+
+        {/* edit modal */}
+        {taskToEdit && (
           <Modal>
             <AddTaskForm
-              isModalOpen={isModalOpen}
-              setIsModalOpen={setIsModalOpen}
-              onSuccess={handleTaskCreated}
+              taskToEdit={taskToEdit}
+              onSuccess={handleTaskEdited}
+              onClose={() => setTaskToEdit(null)}
             />
           </Modal>
         )}
-        <Header isModalOpen={isModalOpen} setIsModalOpen={setIsModalOpen} title={"Dashboard"}/>
+
+        <Header
+          isModalOpen={isModalOpen}
+          setIsModalOpen={setIsModalOpen}
+          title="Dashboard"
+        />
         <div className={`${style.statsRow} mt-4`}>
-          {stats.map(({ title, value, change }) => {
-            return <StatsCards key={title} title={title} value={value} change={change} />;
-          })}
+          {stats.map(({ title, value, change }) => (
+            <StatsCards key={title} title={title} value={value} change={change} />
+          ))}
           <CompletionChart />
         </div>
         <div className={`${style.charts} mt-4`}>
@@ -99,13 +91,7 @@ const Dashboard = () => {
           <PriorityChart data={tasks} />
         </div>
         <div>
-          <TasksTable
-            tasks={tasks}
-            isLoading={isLoading}
-            handleDelete={handleDelete}
-            isEditing={isEditing}
-            setIsEditing={setIsEditing}
-          />
+          <TasksTable />
         </div>
       </section>
     </main>

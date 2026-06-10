@@ -12,19 +12,16 @@ import { useTasks } from "../../../context/TasksContext";
 const TaskRow = ({ task }) => {
   const [isEditingStatus, setIsEditingStatus] = useState(false);
   const [newStatus, setNewStatus] = useState(task.status);
-  const { handleDelete, isEditing, setIsEditing } = useTasks();
+  const { handleDelete, handleEditTask } = useTasks();
 
   function handleUpdateStatus() {
-    console.log("update status");
     updateTask(task.id, { status: newStatus });
-    setIsEditingStatus(!isEditingStatus);
+    setIsEditingStatus(false);
   }
 
   async function handleComplete() {
-    console.log("complete clicked");
-    const res = await updateTask(task.id, { status: "Completed" });
-    console.log(res);
-    setNewStatus(res.status);
+    await updateTask(task.id, { status: "Completed" });
+    setNewStatus("Completed");
   }
 
   const isCompleted = newStatus === "Completed";
@@ -34,23 +31,21 @@ const TaskRow = ({ task }) => {
       <div className="d-flex align-items-center">
         <input type="checkbox" />
       </div>
-      <div className="">
+      <div>
         <h6 className={`${style.title}`}>{task.title}</h6>
         <span className={`${style.desc}`}>{task.description}</span>
       </div>
       <div>
-        <span
-          className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}
-        >
+        <span className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}>
           . {task.project}
         </span>
       </div>
-      <div className="">
+      <div>
         <span className={`${style.badge} ${style[taskStyles.priority[task.priority]]}`}>
           {task.priority}
         </span>
       </div>
-      <div className="">
+      <div>
         {isEditingStatus ? (
           <div className="d-flex align-items-center">
             <select
@@ -81,20 +76,18 @@ const TaskRow = ({ task }) => {
           </span>
         )}
       </div>
-      <div className="">
+      <div>
         <span className={`${style.date}`}>{format(task.dueDate, "dd/MM/yyyy")}</span>
       </div>
-      <div className="">
+      <div>
         <span className={`${style.date}`}>{format(task.dueDate, "dd/MM/yyyy")}</span>
       </div>
-      <div className="">
+      <div>
         <span className={`${style.date}`}>
-          {formatDistance(new Date(task.dueDate), new Date(), {
-            addSuffix: true,
-          })}
+          {formatDistance(new Date(task.dueDate), new Date(), { addSuffix: true })}
         </span>
       </div>
-      <div className="">
+      <div>
         <Button type="success" disable={isCompleted} onClick={handleComplete}>
           Complete
         </Button>
@@ -102,7 +95,7 @@ const TaskRow = ({ task }) => {
           <SquarePen
             color="var(--text-secondary)"
             size={24}
-            onClick={() => setIsEditing(!isEditing)}
+            onClick={() => handleEditTask(task)}
           />
         </Button>
         <Button type="iconAction">
