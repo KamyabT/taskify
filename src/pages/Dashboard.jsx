@@ -29,7 +29,6 @@ const Dashboard = () => {
     handleCancelDelete,
     handleTaskCreated,
     handleTaskEdited,
-    handleDelete,
     setTaskToEdit,
   } = useTasks();
 

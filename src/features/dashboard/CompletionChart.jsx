@@ -1,16 +1,34 @@
-import style from "./CompletionChart.module.css";
-import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import { useTasks } from "../../context/TasksContext";
 import { useState } from "react";
-
-const data = [
-  { name: "Completed", value: 12 },
-  { name: "Remaining", value: 12 },
-];
+import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
+import style from "./CompletionChart.module.css";
+import { isToday, isThisWeek, isThisMonth } from "date-fns";
 
 const COLORS = ["#6366F1", "#E5E7EB"];
 
 const CompletionChart = () => {
   const [period, setPeriod] = useState("day");
+
+  const { tasks } = useTasks();
+
+  function filteredByDate(task) {
+    const date = new Date(task.updated);
+    if (period === "day") return isToday(date);
+    if (period === "week") return isThisWeek(date);
+    if (period === "month") return isThisMonth(date);
+  }
+
+  const completedTasks = tasks.filter((task) => {
+    return task.status === "Completed" && filteredByDate(task);
+  });
+
+  let totalTasks = tasks.length;
+  const completedTasksCount = completedTasks.length;
+
+  const data = [
+    { name: "Completed", value: completedTasksCount },
+    { name: "Remaining", value: totalTasks - completedTasksCount },
+  ];
 
   return (
     <div className={style.CompletionChart}>
@@ -47,8 +65,12 @@ const CompletionChart = () => {
           </ResponsiveContainer>
         </div>
         <div className="d-flex flex-column">
-          <p className="text-card-value">50%</p>
-          <span className="text-card-value-small">12 of 24 tasks</span>
+          <p className="text-card-value">
+            {((completedTasksCount / totalTasks) * 100).toFixed(0)}%
+          </p>
+          <span className="text-card-value-small">
+            {completedTasksCount} of {totalTasks} tasks
+          </span>
           <span className="text-card-label">Completed</span>
         </div>
       </div>
