@@ -1,7 +1,7 @@
 export const recordInitialState = {
   title: "",
   description: "",
-  project: "Frontend",
+  project: "",
   priority: "Medium",
   status: "To Do",
   dueDate: "",
@@ -9,6 +9,7 @@ export const recordInitialState = {
 };
 
 export function createTaskReducer(state, action) {
+  console.log(action, "state reducer");
   switch (action.type) {
     case "SET_TITLE":
       return {

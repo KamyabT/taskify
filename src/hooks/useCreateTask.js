@@ -8,6 +8,7 @@ export function useCreateTask(onSuccess, taskId = null) {
 
   async function handleSubmit(e) {
     e.preventDefault();
+    console.log(newTask , 'inside the useCreateTask')
     try {
       if (taskId) {
         await updateTask(taskId, newTask);
