@@ -1,3 +1,8 @@
+import { useState } from "react";
+import { useTasks } from "../../context/TasksContext";
+import { isThisWeek, isThisMonth } from "date-fns";
+import { format } from "date-fns";
+
 import {
   LineChart,
   Line,
@@ -11,39 +16,64 @@ import {
 
 import style from "./OverViewChart.module.css";
 
-const data = [
-  { name: "May 1", tasks: 4 },
-  { name: "May 5", tasks: 8 },
-  { name: "May 10", tasks: 13 },
-  { name: "May 15", tasks: 11 },
-  { name: "May 20", tasks: 19 },
-  { name: "May 25", tasks: 10 },
-  { name: "May 30", tasks: 15 },
-];
-
 const OverViewChart = () => {
+  const [period, setPeriod] = useState("week");
+
+  const { tasks } = useTasks();
+
+  const taskCounts = {};
+
+  const filteredByDate = tasks.filter((task) => {
+    if (period === "week") return isThisWeek(new Date(task.created));
+    if (period === "month") return isThisMonth(new Date(task.created));
+  });
+
+ 
+
+  filteredByDate.forEach((task) => {
+    const day = format(new Date(task.created), "EEE");
+
+    if (taskCounts[day]) {
+      taskCounts[day] += 1;
+    } else {
+      taskCounts[day] = 1;
+    }
+  });
+
+ 
+
+  const chartData = Object.entries(taskCounts).map((taskDate) => ({
+    name: taskDate[0],
+    tasks: taskDate[1],
+  }));
+
   return (
     <section className={style.chartCard}>
       <div className={style.header}>
         <h5>Tasks Overview</h5>
-        {data.length <= 0 ? null : (
-          <select className={`${style.select} text-card-label`}>
-            <option value="">This Month</option>
-            <option value="">This Week</option>
-            <option value="">This Day</option>
+        {chartData.length <= 0 ? null : (
+          <select
+            className={`${style.select} text-card-label`}
+            value={period}
+            onChange={(e) => setPeriod(e.target.value)}
+          >
+            <option value="week">This Week</option>
+            <option value="month">This Month</option>
           </select>
         )}
       </div>
 
-      {data.length <= 0 ? (
+      {chartData.length <= 0 ? (
         <div className={style.noData}>
           <p className="text-center text-card-value-medium">No tasks yet.</p>
-          <p className="text-center text-card-value-medium">Create your first task to see activity and progress here.</p>
+          <p className="text-center text-card-value-medium">
+            Create your first task to see activity and progress here.
+          </p>
         </div>
       ) : (
         <div className={style.chartWrapper}>
           <ResponsiveContainer width="100%" height="100%">
-            <AreaChart data={data}>
+            <AreaChart data={chartData}>
               <defs>
                 <linearGradient id="colorTasks" x1="0" y1="0" x2="0" y2="1">
                   <stop offset="5%" stopColor="#6366F1" stopOpacity={0.2} />

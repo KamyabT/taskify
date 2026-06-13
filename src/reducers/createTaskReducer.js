@@ -9,7 +9,6 @@ export const recordInitialState = {
 };
 
 export function createTaskReducer(state, action) {
-  console.log(action, "state reducer");
   switch (action.type) {
     case "SET_TITLE":
       return {

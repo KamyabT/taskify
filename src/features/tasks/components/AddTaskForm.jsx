@@ -21,10 +21,6 @@ const AddTaskForm = ({ taskToEdit, onSuccess, onClose }) => {
     taskToEdit?.id,
   );
 
-  console.log(taskToEdit, "task to edit obj");
-
-  console.log(taskToEdit.project);
-  console.log(newTask.project);
 
   useEffect(() => {
     if (taskToEdit) {
