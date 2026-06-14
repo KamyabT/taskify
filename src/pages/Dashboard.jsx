@@ -10,14 +10,9 @@ import Modal from "../components/ui/Modal/Modal";
 import AddTaskForm from "../features/tasks/components/AddTaskForm";
 import Confirmation from "../components/ui/Confirmation/Confirmation";
 import { useTasks } from "../context/TasksContext";
-import { isThisMonth, isSameMonth, subMonths } from "date-fns";
+import { useStatsData } from "../hooks/useStatsData";
+// import { isThisMonth, isSameMonth, subMonths } from "date-fns";
 
-const stats = [
-  { title: "total", value: 24, change: 12 },
-  { title: "progress", value: 8, change: 5 },
-  { title: "completed", value: 12, change: 18 },
-  { title: "overdue", value: 4, change: 8 },
-];
 
 const Dashboard = () => {
   const {
@@ -31,74 +26,11 @@ const Dashboard = () => {
     handleTaskCreated,
     handleTaskEdited,
     setTaskToEdit,
-    thisMonthTotalTasks,
-    lastMonthTotalTasks,
-    thisMonthInProgressTasks,
-    lastMonthInProgressTasks,
-    thisMonthCompletedTasks,
-    lastMonthCompletedTasks,
-    thisMonthOverdueTasks,
-    lastMonthOverdueTasks,
   } = useTasks();
 
   /**************Stats Logic***************/
 
-  const currentMonthTasks = tasks.filter((task) => {
-    return isThisMonth(new Date(task.created));
-  });
-
-  const perviousMonthTasks = tasks.filter((task) => {
-    return isSameMonth(new Date(task.created), subMonths(new Date(), 1));
-  });
-
-  let statsData = [
-    {
-      title: "total",
-      value: thisMonthTotalTasks,
-      change:
-        lastMonthTotalTasks > 0
-          ? (
-              ((thisMonthTotalTasks - lastMonthTotalTasks) / lastMonthTotalTasks) *
-              100
-            ).toFixed(0)
-          : thisMonthTotalTasks * 100,
-    },
-    {
-      title: "progress",
-      value: thisMonthInProgressTasks,
-      change:
-        lastMonthInProgressTasks > 0
-          ? (
-              (thisMonthInProgressTasks -
-                lastMonthInProgressTasks / lastMonthInProgressTasks) *
-              100
-            ).toFixed(0)
-          : thisMonthInProgressTasks * 100,
-    },
-    {
-      title: "completed",
-      value: thisMonthCompletedTasks,
-      change:
-        lastMonthCompletedTasks > 0
-          ? (
-              ((thisMonthCompletedTasks - lastMonthCompletedTasks) /
-                lastMonthCompletedTasks) *
-              100
-            ).toFixed(0)
-          : thisMonthCompletedTasks * 100,
-    },
-    {
-      title: "overdue",
-      value: thisMonthOverdueTasks,
-      change:
-        lastMonthOverdueTasks > 0
-          ? (
-              ((thisMonthOverdueTasks - lastMonthOverdueTasks) / lastMonthOverdueTasks) *
-              100
-            ).toFixed(0)
-          : thisMonthOverdueTasks * 100,
-    },
-  ];
+  const { statsData } = useStatsData();
 
   return (
     <main className={style.dashboard}>
@@ -143,8 +75,8 @@ const Dashboard = () => {
           title="Dashboard"
         />
         <div className={`${style.statsRow} mt-4`}>
-          {statsData.map((statCard) => (
-            <StatsCards statCard={statCard} />
+          {statsData.map((card) => (
+            <StatsCards statCard={card} key={card.title} />
           ))}
           <CompletionChart />
         </div>
