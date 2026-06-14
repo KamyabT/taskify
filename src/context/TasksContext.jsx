@@ -1,5 +1,6 @@
 import { createContext, useState, useEffect, useContext } from "react";
 import { getTasks, deleteTask } from "../services/tasks";
+import { isThisMonth, isSameMonth, subMonths } from "date-fns";
 import toast from "react-hot-toast";
 
 const TasksContext = createContext();
@@ -70,6 +71,38 @@ export function TasksProvider({ children }) {
     toast.success("Task updated successfully!");
   }
 
+  /*****************Stat Cards Logic****************/
+  // const completedTasks
+
+  const currentMonthTasks = tasks.filter((task) => {
+    return isThisMonth(new Date(task.created));
+  });
+
+  const perviousMonthTasks = tasks.filter((task) => {
+    return isSameMonth(new Date(task.created), subMonths(new Date(), 1));
+  });
+
+  let thisMonthTotalTasks = currentMonthTasks.length;
+  let lastMonthTotalTasks = perviousMonthTasks && perviousMonthTasks.length > 0 ? perviousMonthTasks.length : 0;
+  let thisMonthInProgressTasks = currentMonthTasks.filter(
+    (task) => task.status === "In-Progress",
+  ).length;
+  let lastMonthInProgressTasks = perviousMonthTasks && perviousMonthTasks.length > 0 ? perviousMonthTasks.filter(
+    (task) => task.status === "In-Progress",
+  ).length : 0;
+  let thisMonthCompletedTasks = currentMonthTasks.filter(
+    (task) => task.status === "Completed",
+  ).length;
+  let lastMonthCompletedTasks = perviousMonthTasks && perviousMonthTasks.length > 0 ? perviousMonthTasks.filter(
+    (task) => task.status === "Completed",
+  ).length : 0;
+  let thisMonthOverdueTasks = currentMonthTasks.filter(
+    (task) => task.status === "Overdue",
+  ).length;
+  let lastMonthOverdueTasks = perviousMonthTasks && perviousMonthTasks.length > 0 ? perviousMonthTasks.filter(
+    (task) => task.status === "Overdue",
+  ).length : 0;
+
   return (
     <TasksContext.Provider
       value={{
@@ -87,6 +120,14 @@ export function TasksProvider({ children }) {
         handleEditTask,
         handleTaskEdited,
         fetchTasks,
+        thisMonthTotalTasks,
+        lastMonthTotalTasks,
+        thisMonthInProgressTasks,
+        lastMonthInProgressTasks,
+        thisMonthCompletedTasks,
+        lastMonthCompletedTasks,
+        thisMonthOverdueTasks,
+        lastMonthOverdueTasks,
       }}
     >
       {children}

@@ -36,7 +36,9 @@ const TaskRow = ({ task }) => {
         <span className={`${style.desc}`}>{task.description}</span>
       </div>
       <div>
-        <span className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}>
+        <span
+          className={`${style.badge} ${style[taskStyles.projectTag[task.projectTag]]}`}
+        >
           . {task.project}
         </span>
       </div>
@@ -77,7 +79,7 @@ const TaskRow = ({ task }) => {
         )}
       </div>
       <div>
-        <span className={`${style.date}`}>{format(task.dueDate, "dd/MM/yyyy")}</span>
+        <span className={`${style.date}`}>{format(task.created, "dd/MM/yyyy")}</span>
       </div>
       <div>
         <span className={`${style.date}`}>{format(task.dueDate, "dd/MM/yyyy")}</span>

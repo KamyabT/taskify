@@ -5,47 +5,42 @@ const configs = {
   total: {
     title: "Total Tasks",
     icon: <ClipboardList color="var(--primary)" size={38} />,
-    value: 24,
-    change: 12,
     backColor: "var(--info-light)",
   },
   progress: {
     title: "In Progress",
     icon: <Timer size={38} color={"var(--warning)"} />,
-    value: 8,
-    change: 5,
     backColor: "var(--warning-light)",
   },
   completed: {
     title: "Completed",
     icon: <CircleCheck size={38} color="var(--success)" />,
-    value: 12,
-    change: 18,
     backColor: "var(--info-light)",
   },
   overdue: {
     title: "Overdue",
     icon: <CircleAlert size={38} color="var(--danger)" />,
-    value: 4,
-    change: 8,
     backColor: "var(--info-light)",
   },
 };
 
-const StatsCards = ({ title, value, change }) => {
-  const data = configs[title]
+const StatsCards = ({ statCard }) => {
+  const data = configs[statCard.title];
 
   return (
     <div className={style.cards} style={{}}>
-      <div className="p-2" style={{ backgroundColor: data.backColor , borderRadius: "8px" }}>
+      <div
+        className="p-2"
+        style={{ backgroundColor: data.backColor, borderRadius: "8px" }}
+      >
         <span>{data.icon}</span>
       </div>
       <div>
         <p className="text-section" style={{ color: "var(--text-secondary)" }}>
-          {data.title}
+          {statCard.title}
         </p>
-        <span className="text-card-value">{value}</span>
-        <span className="text-small ms-3">%{change}</span>
+        <span className="text-card-value">{statCard.value}</span>
+        <span className="text-small ms-3">%{statCard.change}</span>
         <div></div>
         <p className="text-small" style={{ color: "var(--text-secondary)" }}>
           vs last month
