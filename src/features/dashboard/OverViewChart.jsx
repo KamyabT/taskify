@@ -21,26 +21,35 @@ const OverViewChart = () => {
 
   const { tasks } = useTasks();
 
-  const taskCounts = {};
-
   const filteredByDate = tasks.filter((task) => {
     if (period === "week") return isThisWeek(new Date(task.created));
     if (period === "month") return isThisMonth(new Date(task.created));
   });
 
- 
+  const taskCounts = {};
+
+  if (period === "week") {
+    ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"].forEach((day) => {
+      taskCounts[day] = 0;
+    });
+  } else if (period === "month") {
+    const daysInMonth = new Date(
+      new Date().getFullYear(),
+      new Date().getMonth() + 1,
+      0,
+    ).getDate();
+    for (let i = 1; i <= daysInMonth; i++) {
+      taskCounts[i] = 0;
+    }
+  }
 
   filteredByDate.forEach((task) => {
-    const day = format(new Date(task.created), "EEE");
-
-    if (taskCounts[day]) {
-      taskCounts[day] += 1;
-    } else {
-      taskCounts[day] = 1;
-    }
+    const key =
+      period === "week"
+        ? format(new Date(task.created), "EEE")
+        : format(new Date(task.created), "d");
+    taskCounts[key] += 1;
   });
-
- 
 
   const chartData = Object.entries(taskCounts).map((taskDate) => ({
     name: taskDate[0],
