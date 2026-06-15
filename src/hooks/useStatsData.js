@@ -12,71 +12,65 @@ export function useStatsData() {
     return isSameMonth(new Date(task.created), subMonths(new Date(), 1));
   });
 
-  const thisMonthInProgressTasks = currentMonthTasks.filter(
-    (task) => task.status === "In-Progress",
-  ).length;
+  function countTasksByStatus(tasksList, status) {
+    return tasksList.filter((task) => task.status === status).length;
+  }
 
-  const lastMonthInProgressTasks =
-    previousMonthTasks.length > 0
-      ? previousMonthTasks.filter((task) => task.status === "In-Progress").length
-      : 0;
+  const thisMonthTotalTasks = currentMonthTasks.length;
+  const lastMonthTotalTasks = previousMonthTasks.length;
 
-  const thisMonthCompletedTasks = currentMonthTasks.filter(
-    (task) => task.status === "Completed",
-  ).length;
+  const thisMonthInProgressTasks = countTasksByStatus(currentMonthTasks, "In-Progress");
+  const lastMonthInProgressTasks = countTasksByStatus(previousMonthTasks, "In-Progress");
 
-  const lastMonthCompletedTasks =
-    previousMonthTasks.length > 0
-      ? previousMonthTasks.filter((task) => task.status === "Completed").length
-      : 0;
+  const thisMonthCompletedTasks = countTasksByStatus(currentMonthTasks, "Completed");
+  const lastMonthCompletedTasks = countTasksByStatus(previousMonthTasks, "Completed");
 
-  const thisMonthOverdueTasks = currentMonthTasks.filter(
-    (task) => task.status === "Overdue",
-  ).length;
-  const lastMonthOverdueTasks =
-    previousMonthTasks.length > 0
-      ? previousMonthTasks.filter((task) => task.status === "Overdue").length
-      : 0;
+  const thisMonthOverdueTasks = countTasksByStatus(currentMonthTasks, "Overdue");
+  const lastMonthOverdueTasks = countTasksByStatus(previousMonthTasks, "Overdue");
+
+  function tasksChangeByPercent(thisMonthCount, lastMonthCount) {
+    return lastMonthCount > 0
+      ? (((thisMonthCount - lastMonthCount) / lastMonthCount) * 100).toFixed(0)
+      : thisMonthCount * 100;
+  }
+
+  const totalChange = tasksChangeByPercent(
+    thisMonthTotalTasks,
+    lastMonthTotalTasks,
+  );
+  const progressChange = tasksChangeByPercent(
+    thisMonthInProgressTasks,
+    lastMonthInProgressTasks,
+  );
+  const completedChange = tasksChangeByPercent(
+    thisMonthCompletedTasks,
+    lastMonthCompletedTasks,
+  );
+  const overDueChange = tasksChangeByPercent(
+    thisMonthOverdueTasks,
+    lastMonthOverdueTasks,
+  );
 
   const statsData = [
     {
       title: "total",
-      value: currentMonthTasks.length,
-      change:
-        previousMonthTasks.length > 0
-          ? (((currentMonthTasks.length - previousMonthTasks.length) /
-              previousMonthTasks.length) *
-            100).toFixed(0)
-          : currentMonthTasks.length * 100,
+      value: thisMonthTotalTasks,
+      change: totalChange,
     },
     {
       title: "progress",
       value: thisMonthInProgressTasks,
-      change:
-        lastMonthInProgressTasks > 0
-          ? (((thisMonthInProgressTasks - lastMonthInProgressTasks) /
-              lastMonthInProgressTasks) *
-            100).toFixed(0)
-          : thisMonthInProgressTasks * 100,
+      change: progressChange,
     },
     {
       title: "completed",
       value: thisMonthCompletedTasks,
-      change:
-        lastMonthCompletedTasks > 0
-          ? (((thisMonthCompletedTasks - lastMonthCompletedTasks) /
-              lastMonthCompletedTasks) *
-            100).toFixed(0)
-          : thisMonthCompletedTasks * 100,
+      change: completedChange,
     },
     {
       title: "overdue",
       value: thisMonthOverdueTasks,
-      change:
-        lastMonthOverdueTasks > 0
-          ? (((thisMonthOverdueTasks - lastMonthOverdueTasks) / lastMonthOverdueTasks) *
-            100).toFixed(0)
-          : thisMonthOverdueTasks * 100,
+      change: overDueChange,
     },
   ];
 
