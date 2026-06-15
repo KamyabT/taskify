@@ -7,6 +7,8 @@ export function useTaskFilters(tasks) {
 
   let filteredTasks = [...tasks];
 
+  console.log(filters.sortBy, "helo");
+
   filteredTasks = filteredTasks.filter((task) => {
     return (
       task.title.toLowerCase().includes(filters.search.toLowerCase()) ||
@@ -26,6 +28,12 @@ export function useTaskFilters(tasks) {
   if (filters.sortBy === "closestDueDate") {
     filteredTasks.sort((a, b) => {
       return new Date(a.dueDate) - new Date(b.dueDate);
+    });
+  }
+
+  if (filters.sortBy === "newest") {
+    filteredTasks.sort((a, b) => {
+      return new Date(b.created) - new Date(a.created);
     });
   }
 
@@ -55,8 +63,4 @@ export function useTaskFilters(tasks) {
     filteredTasks,
     dispatch,
   };
-
-  //   if (filters.sortBy === "newest") {
-  //     filteredTasks.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt));
-  //   }
 }

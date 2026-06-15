@@ -52,7 +52,7 @@ const TableFilters = ({ filters, dispatch }) => {
           >
             <option value="Default">Default</option>
             <option value="newest">Sort by: Newest</option>
-            <option value="closestDueDate">Sort by: Date</option>
+            <option value="closestDueDate">Sort by: Due Date</option>
             <option value="priority">Sort by: Priority</option>
             <option value="status">Sort by: Status</option>
           </select>
