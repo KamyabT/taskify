@@ -7,8 +7,6 @@ export function useTaskFilters(tasks) {
 
   let filteredTasks = [...tasks];
 
-  console.log(filters.sortBy, "helo");
-
   filteredTasks = filteredTasks.filter((task) => {
     return (
       task.title.toLowerCase().includes(filters.search.toLowerCase()) ||

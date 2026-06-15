@@ -17,7 +17,6 @@ export function useCreateTask(onSuccess, taskId = null) {
       onSuccess();
     } catch (err) {
       setError("Failed. Please try again.");
-      console.log(err);
     }
   }
 

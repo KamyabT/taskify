@@ -18,7 +18,6 @@ export function TasksProvider({ children }) {
       setTasks(data);
     } catch (error) {
       toast.error("Failed to get tasks. Please try again.");
-      console.log(error);
     } finally {
       setIsLoading(false);
     }
@@ -32,7 +31,6 @@ export function TasksProvider({ children }) {
       toast.success("Task deleted successfully!");
     } catch (error) {
       toast.error("Failed to delete task. Please try again.");
-      console.log(error);
     } finally {
       setIsLoading(false);
     }

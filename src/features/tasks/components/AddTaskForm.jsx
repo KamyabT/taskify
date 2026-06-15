@@ -3,6 +3,8 @@ import style from "./AddTaskForm.module.css";
 import Button from "../../../components/ui/Button";
 import { createTask, updateTask } from "../../../services/tasks";
 import { format } from "date-fns";
+import toast from "react-hot-toast";
+
 import {
   Bell,
   Flag,
@@ -42,7 +44,7 @@ const AddTaskForm = ({ taskToEdit, onSuccess, onClose }) => {
       }
       onSuccess();
     } catch (err) {
-      console.log(err);
+      toast.error("Failed to create/edit task. Please try again.");
     }
   }
 

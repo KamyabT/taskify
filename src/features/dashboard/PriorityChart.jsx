@@ -3,7 +3,6 @@ import { PieChart, Pie, Cell, ResponsiveContainer } from "recharts";
 import style from "./PriorityChart.module.css";
 
 const PriorityChart = ({ data }) => {
-  console.log("priority ", data);
 
   const groupedData = [
     {
