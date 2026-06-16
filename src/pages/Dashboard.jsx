@@ -11,7 +11,6 @@ import AddTaskForm from "../features/tasks/components/AddTaskForm";
 import Confirmation from "../components/ui/Confirmation/Confirmation";
 import { useTasks } from "../context/TasksContext";
 import { useStatsData } from "../hooks/useStatsData";
-// import { isThisMonth, isSameMonth, subMonths } from "date-fns";
 
 
 const Dashboard = () => {
