@@ -1,4 +1,5 @@
-Taskify
+<h1>Taskify</h1>
+
 A task management dashboard built with React.js and PocketBase.
 🚀 Tech Stack
 
@@ -11,24 +12,22 @@ Recharts
 date-fns
 CSS Modules
 
-✨ Features
+<h3>✨ Features</h3>
 
-User authentication (login/register)
 Create, edit, and delete tasks
 Filter tasks by status, priority, and search
 Completion rate chart
 Tasks overview chart
 Priority distribution chart
 Context API for state management
-Responsive design
 
-🛠️ Getting Started
+<h3>🛠️ Getting Started</h3>
 Prerequisites
 
 Node.js
 PocketBase v0.29.0
 
-Installation
+<h4>Installation</h4>
 
 Clone the repo
 
@@ -46,7 +45,7 @@ bash./pocketbase serve
 Start the app
 
 bashnpm start
-🔗 Links
+<h3>🔗 Links</h3>
 
 Live Demo: [coming soon]
 GitHub: https://github.com/KamyabT/taskify
