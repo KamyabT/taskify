@@ -25,6 +25,7 @@ Context API for state management
 Prerequisites
 
 Node.js
+
 PocketBase v0.29.0
 
 <h4>Installation</h4>
