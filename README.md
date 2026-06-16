@@ -26,7 +26,7 @@ Coming soon
 
 ### Prerequisites
 - Node.js
-- PocketBase
+- PocketBase v0.29.0
 
 ### Installation
 1. Clone the repo
@@ -35,8 +35,11 @@ Coming soon
 2. Install dependencies
    npm install
 
-3. Start PocketBase
+3. Download PocketBase v0.29.0
+   https://github.com/pocketbase/pocketbase/releases/tag/v0.29.0
+
+4. Start PocketBase
    ./pocketbase serve
 
-4. Start the app
+5. Start the app
    npm start
