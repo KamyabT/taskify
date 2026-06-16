@@ -1,45 +1,52 @@
-# Taskify
+Taskify
+A task management dashboard built with React.js and PocketBase.
+🚀 Tech Stack
 
-A task management app built with React and PocketBase.
+React.js
+React Router DOM
+Context API
+React Hook Form
+PocketBase
+Recharts
+date-fns
+CSS Modules
 
-## Live Demo
-Coming soon
+✨ Features
 
-## Features
-- Create, edit, and delete tasks
-- Filter tasks by status, priority, and search
-- Completion rate chart
-- Tasks overview chart
-- Priority distribution chart
-- Context API for state management
+User authentication (login/register)
+Create, edit, and delete tasks
+Filter tasks by status, priority, and search
+Completion rate chart
+Tasks overview chart
+Priority distribution chart
+Context API for state management
+Responsive design
 
-## Tech Stack
-- React.js
-- PocketBase
-- Context API
-- React Hook Form
-- Recharts
-- date-fns
-- CSS Modules
+🛠️ Getting Started
+Prerequisites
 
-## Getting Started
+Node.js
+PocketBase v0.29.0
 
-### Prerequisites
-- Node.js
-- PocketBase v0.29.0
+Installation
 
-### Installation
-1. Clone the repo
-   git clone https://github.com/KamyabT/taskify
+Clone the repo
 
-2. Install dependencies
-   npm install
+bashgit clone https://github.com/KamyabT/taskify
 
-3. Download PocketBase v0.29.0
-   https://github.com/pocketbase/pocketbase/releases/tag/v0.29.0
+Install dependencies
 
-4. Start PocketBase
-   ./pocketbase serve
+bashnpm install
 
-5. Start the app
-   npm start
+Download PocketBase v0.29.0 from here
+Start PocketBase
+
+bash./pocketbase serve
+
+Start the app
+
+bashnpm start
+🔗 Links
+
+Live Demo: [coming soon]
+GitHub: https://github.com/KamyabT/taskify
